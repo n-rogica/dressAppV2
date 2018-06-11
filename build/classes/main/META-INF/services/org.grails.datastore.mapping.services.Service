@@ -1,2 +1,4 @@
+dressapp.clothes.$ClothesServiceImplementation
+dressapp.users.$BodyDescriptionServiceImplementation
 dressapp.users.$UserInfoServiceImplementation
 dressapp.users.$UserServiceImplementation
