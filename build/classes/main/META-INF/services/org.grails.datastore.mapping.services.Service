@@ -1,3 +1,4 @@
+dressapp.calendar.$EventServiceImplementation
 dressapp.clothes.$ClothesServiceImplementation
 dressapp.containers.$OutfitServiceImplementation
 dressapp.containers.$SuitcaseServiceImplementation

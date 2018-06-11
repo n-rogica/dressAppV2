@@ -1,17 +1,20 @@
 package dressapp.users
 
 import dressapp.containers.Wardrobe
+import dressapp.calendar.Event
 
 class User {
 
     String userName
     String password
     static hasOne = [userInfo: UserInfo, wardrobe: Wardrobe]
+    static hasMany = [friends: User, events: Event]
 
 
     static constraints = {
       userName blank: false, unique: true
       password size: 5..15, blank: false, password: true
+      friends nullable: true
     }
 
     User(userName, password) {
@@ -23,6 +26,14 @@ class User {
       this.password = password
       this.userInfo = new UserInfo(this)
       this. wardrobe = new Wardrobe(this)
+    }
+
+    def addFriend() {
+        return "add friend"
+    }
+
+    def acceptFriend() {
+      return "acceptFriend"
     }
 
   }
