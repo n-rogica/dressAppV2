@@ -1,0 +1,6 @@
+#Sun, 10 Jun 2018 16:02:09 -0300
+
+info.app.version=0.1
+info.app.name=dressAppV2
+grails.env=development
+info.app.grailsVersion=3.3.5
