@@ -1,6 +1,7 @@
 package dressapp.clothes
 
 import dressapp.users.User
+import dressapp.containers.*
 
 class Clothes {
 
@@ -18,6 +19,7 @@ class Clothes {
     boolean visibleToFriends
     int usesCount
     User owner
+    static belongsTo = [wardrobe: Wardrobe]
 
     static constraints = {
       //todo revisar con la historia de usuario
