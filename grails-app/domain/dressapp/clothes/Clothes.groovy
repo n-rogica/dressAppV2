@@ -26,19 +26,15 @@ class Clothes {
       description blank: true
       brand blank: true
       usesCount display: false
-      visibleToFriends display: false
-      wardrobe display: false
+      
     }
 
     static mapping = {
-      visibleToFriends defaultValue: "TRUE" //revisar esto
+      visibleToFriends defaultValue: "0" //revisar esto
       usesCount defaultValue: "0"
       bodyPart enumType: 'string' //esto indica como se ve el enumerado en la base de datos
       coldResistance enumType: 'string'
       formality enumType: 'string'
-      status enumType: 'string', defaultValue: "AVAILABLE"
-
-
-
+      status enumType: 'string', defaultValue: "'AVAILABLE'"
     }
 }
