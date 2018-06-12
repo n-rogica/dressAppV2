@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dressapp.users.UserSpec" tests="3" skipped="0" failures="1" errors="0" timestamp="2018-06-12T15:02:55" hostname="nico-N53SV" time="0.319">
+  <properties/>
+  <testcase name="test se crean usuarios" classname="dressapp.users.UserSpec" time="0.286"/>
+  <testcase name="cantidad de user info" classname="dressapp.users.UserSpec" time="0.011"/>
+  <testcase name="el user info es el que corresponde al usuario" classname="dressapp.users.UserSpec" time="0.022">
+    <failure message="Condition not satisfied:&#10;&#10;b.size() == 3&#10;| |      |&#10;| 2      false&#10;[dressapp.users.UserInfo : 1, dressapp.users.UserInfo : 2]&#10;" type="org.spockframework.runtime.SpockComparisonFailure">Condition not satisfied:
+
+b.size() == 3
+| |      |
+| 2      false
+[dressapp.users.UserInfo : 1, dressapp.users.UserInfo : 2]
+
+	at dressapp.users.UserSpec.el user info es el que corresponde al usuario(UserSpec.groovy:39)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

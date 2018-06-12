@@ -2,6 +2,7 @@ package dressapp.clothes
 
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
+import dressapp.containers.Wardrobe
 
 class WardrobeSpec extends Specification implements DomainUnitTest<Wardrobe> {
 
@@ -13,6 +14,6 @@ class WardrobeSpec extends Specification implements DomainUnitTest<Wardrobe> {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 }

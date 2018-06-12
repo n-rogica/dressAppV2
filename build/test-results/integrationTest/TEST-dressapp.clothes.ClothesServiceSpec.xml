@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dressapp.clothes.ClothesServiceSpec" tests="5" skipped="0" failures="5" errors="0" timestamp="2018-06-12T14:39:29" hostname="nico-N53SV" time="30.513">
+  <properties/>
+  <testcase name="test get" classname="dressapp.clothes.ClothesServiceSpec" time="29.631">
+    <failure message="Condition not satisfied:&#10;&#10;false&#10;&#10;TODO: Provide a setupData() implementation for this generated test suite&#10;" type="org.spockframework.runtime.ConditionNotSatisfiedError">Condition not satisfied:
+
+false
+
+TODO: Provide a setupData() implementation for this generated test suite
+
+	at dressapp.clothes.ClothesServiceSpec.setupData(ClothesServiceSpec.groovy:22)
+	at dressapp.clothes.ClothesServiceSpec.$tt__$spock_feature_0_0(ClothesServiceSpec.groovy:27)
+	at dressapp.clothes.ClothesServiceSpec.test get_closure1(ClothesServiceSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:418)
+	at groovy.lang.Closure.call(Closure.java:434)
+	at grails.gorm.transactions.GrailsTransactionTemplate$1.doInTransaction(GrailsTransactionTemplate.groovy:68)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:133)
+	at grails.gorm.transactions.GrailsTransactionTemplate.executeAndRollback(GrailsTransactionTemplate.groovy:65)
+	at dressapp.clothes.ClothesServiceSpec.test get(ClothesServiceSpec.groovy)
+</failure>
+  </testcase>
+  <testcase name="test list" classname="dressapp.clothes.ClothesServiceSpec" time="0.235">
+    <failure message="Condition not satisfied:&#10;&#10;false&#10;&#10;TODO: Provide a setupData() implementation for this generated test suite&#10;" type="org.spockframework.runtime.ConditionNotSatisfiedError">Condition not satisfied:
+
+false
+
+TODO: Provide a setupData() implementation for this generated test suite
+
+	at dressapp.clothes.ClothesServiceSpec.setupData(ClothesServiceSpec.groovy:22)
+	at dressapp.clothes.ClothesServiceSpec.$tt__$spock_feature_0_1(ClothesServiceSpec.groovy:34)
+	at dressapp.clothes.ClothesServiceSpec.test list_closure2(ClothesServiceSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:418)
+	at groovy.lang.Closure.call(Closure.java:434)
+	at grails.gorm.transactions.GrailsTransactionTemplate$1.doInTransaction(GrailsTransactionTemplate.groovy:68)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:133)
+	at grails.gorm.transactions.GrailsTransactionTemplate.executeAndRollback(GrailsTransactionTemplate.groovy:65)
+	at dressapp.clothes.ClothesServiceSpec.test list(ClothesServiceSpec.groovy)
+</failure>
+  </testcase>
+  <testcase name="test count" classname="dressapp.clothes.ClothesServiceSpec" time="0.202">
+    <failure message="Condition not satisfied:&#10;&#10;false&#10;&#10;TODO: Provide a setupData() implementation for this generated test suite&#10;" type="org.spockframework.runtime.ConditionNotSatisfiedError">Condition not satisfied:
+
+false
+
+TODO: Provide a setupData() implementation for this generated test suite
+
+	at dressapp.clothes.ClothesServiceSpec.setupData(ClothesServiceSpec.groovy:22)
+	at dressapp.clothes.ClothesServiceSpec.$tt__$spock_feature_0_2(ClothesServiceSpec.groovy:45)
+	at dressapp.clothes.ClothesServiceSpec.test count_closure3(ClothesServiceSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:418)
+	at groovy.lang.Closure.call(Closure.java:434)
+	at grails.gorm.transactions.GrailsTransactionTemplate$1.doInTransaction(GrailsTransactionTemplate.groovy:68)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:133)
+	at grails.gorm.transactions.GrailsTransactionTemplate.executeAndRollback(GrailsTransactionTemplate.groovy:65)
+	at dressapp.clothes.ClothesServiceSpec.test count(ClothesServiceSpec.groovy)
+</failure>
+  </testcase>
+  <testcase name="test delete" classname="dressapp.clothes.ClothesServiceSpec" time="0.238">
+    <failure message="Condition not satisfied:&#10;&#10;false&#10;&#10;TODO: Provide a setupData() implementation for this generated test suite&#10;" type="org.spockframework.runtime.ConditionNotSatisfiedError">Condition not satisfied:
+
+false
+
+TODO: Provide a setupData() implementation for this generated test suite
+
+	at dressapp.clothes.ClothesServiceSpec.setupData(ClothesServiceSpec.groovy:22)
+	at dressapp.clothes.ClothesServiceSpec.$tt__$spock_feature_0_3(ClothesServiceSpec.groovy:52)
+	at dressapp.clothes.ClothesServiceSpec.test delete_closure4(ClothesServiceSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:418)
+	at groovy.lang.Closure.call(Closure.java:434)
+	at grails.gorm.transactions.GrailsTransactionTemplate$1.doInTransaction(GrailsTransactionTemplate.groovy:68)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:133)
+	at grails.gorm.transactions.GrailsTransactionTemplate.executeAndRollback(GrailsTransactionTemplate.groovy:65)
+	at dressapp.clothes.ClothesServiceSpec.test delete(ClothesServiceSpec.groovy)
+</failure>
+  </testcase>
+  <testcase name="test save" classname="dressapp.clothes.ClothesServiceSpec" time="0.204">
+    <failure message="Condition not satisfied:&#10;&#10;false&#10;&#10;TODO: Provide a valid instance to save&#10;" type="org.spockframework.runtime.ConditionNotSatisfiedError">Condition not satisfied:
+
+false
+
+TODO: Provide a valid instance to save
+
+	at dressapp.clothes.ClothesServiceSpec.$tt__$spock_feature_0_4(ClothesServiceSpec.groovy:67)
+	at dressapp.clothes.ClothesServiceSpec.test save_closure5(ClothesServiceSpec.groovy)
+	at groovy.lang.Closure.call(Closure.java:418)
+	at groovy.lang.Closure.call(Closure.java:434)
+	at grails.gorm.transactions.GrailsTransactionTemplate$1.doInTransaction(GrailsTransactionTemplate.groovy:68)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:133)
+	at grails.gorm.transactions.GrailsTransactionTemplate.executeAndRollback(GrailsTransactionTemplate.groovy:65)
+	at dressapp.clothes.ClothesServiceSpec.test save(ClothesServiceSpec.groovy)
+</failure>
+  </testcase>
+  <system-out><![CDATA[Grails application running at http://localhost:39123 in environment: test
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

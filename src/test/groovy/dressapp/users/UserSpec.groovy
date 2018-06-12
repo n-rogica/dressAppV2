@@ -11,8 +11,33 @@ class UserSpec extends Specification implements DomainUnitTest<User> {
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "test se crean usuarios"() {
+        setup:
+        new User('abc','abcdef').save()
+
+
+        expect:
+            User.count() == 1
+    }
+
+    void "cantidad de user info"() {
+        setup:
+        def a = new User('abc','abcdef').save()
+
+
+        expect:
+            UserInfo.count() == 1
+    }
+
+    void "el user info es el que corresponde al usuario"() {
+      setup:
+      new User('abc','abcdef').save()
+      new User('abcde','abcdef').save()
+      def b = UserInfo.getAll()
+
+      expect:
+      b.size() == 2
+
+
     }
 }

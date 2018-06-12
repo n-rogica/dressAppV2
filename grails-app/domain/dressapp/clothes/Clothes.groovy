@@ -6,16 +6,16 @@ import dressapp.containers.*
 class Clothes {
 
     String name
-    //bodypart
+    BodyPart bodyPart
     String mainColour
     String fabric
-    //coldResistance
-    //formality
+    ColdResistance coldResistance
+    Formality formality
     String description
     String brand
     String size
     String picture
-    //state
+    Status status
     boolean visibleToFriends
     int usesCount
     User owner
@@ -27,11 +27,18 @@ class Clothes {
       brand blank: true
       usesCount display: false
       visibleToFriends display: false
+      wardrobe display: false
     }
 
     static mapping = {
-      visibleToFriends defaultValue: "'true'" //revisar esto
+      visibleToFriends defaultValue: "TRUE" //revisar esto
       usesCount defaultValue: "0"
+      bodyPart enumType: 'string' //esto indica como se ve el enumerado en la base de datos
+      coldResistance enumType: 'string'
+      formality enumType: 'string'
+      status enumType: 'string', defaultValue: "AVAILABLE"
+
+
 
     }
 }

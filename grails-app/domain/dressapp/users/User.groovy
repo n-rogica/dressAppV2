@@ -11,11 +11,12 @@ class User {
     static hasMany = [friends: User, events: Event]
 
 
+
     static constraints = {
       userName blank: false, unique: true
       password size: 5..15, blank: false, password: true
       friends nullable: true
-    }
+    }    
 
     User(userName, password) {
       /* este seria el constructor que se tiene que llamar al crear

@@ -6,10 +6,14 @@ class Outfit extends ClothesManager{
 
     String description
     int usesCount
-    //status
+    OutfitStatus outfitStatus
     static belongsTo = [wardrobe: Wardrobe]
 
     static constraints = {
+    }
+
+    static mapping = {
+      outfitStatus enumType: 'string'
     }
 
     def use() {
@@ -27,4 +31,6 @@ class Outfit extends ClothesManager{
     def deleteClothes(Clothes clothesToDelete) {
       return "borrando ropa"
     }
+
+
 }
