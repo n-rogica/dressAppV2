@@ -1,5 +1,6 @@
 package dressapp.containers
 
+import groovy.transform.EqualsAndHashCode
 import dressapp.clothes.Clothes
 import dressapp.users.User
 

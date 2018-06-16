@@ -1,8 +1,11 @@
 package dressapp.users
 
+import groovy.transform.EqualsAndHashCode
+
 import dressapp.containers.Wardrobe
 import dressapp.calendar.Event
 
+@EqualsAndHashCode
 class User {
 
     String userName
