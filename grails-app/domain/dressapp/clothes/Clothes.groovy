@@ -26,15 +26,31 @@ class Clothes {
       description blank: true
       brand blank: true
       usesCount display: false
-      
+
     }
 
     static mapping = {
-      visibleToFriends defaultValue: "0" //revisar esto
+      visibleToFriends defaultValue: "TRUE" //revisar esto
       usesCount defaultValue: "0"
       bodyPart enumType: 'string' //esto indica como se ve el enumerado en la base de datos
       coldResistance enumType: 'string'
       formality enumType: 'string'
       status enumType: 'string', defaultValue: "'AVAILABLE'"
     }
+
+    Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
+      description, size, picture, owner, wardrobe) {
+        this.name = name
+        this.bodyPart = bodyPart
+        this.mainColour = mainColour
+        this.fabric = fabric
+        this.coldResistance = coldResistance
+        this.formality = formality
+        this.description = description
+        this.size = size
+        this.picture = picture
+        this.owner = owner
+        this.wardrobe = wardrobe
+      }
+
 }

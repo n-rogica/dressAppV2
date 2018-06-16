@@ -16,7 +16,7 @@ class User {
       userName blank: false, unique: true
       password size: 5..15, blank: false, password: true
       friends nullable: true
-    }    
+    }
 
     User(userName, password) {
       /* este seria el constructor que se tiene que llamar al crear
@@ -26,7 +26,7 @@ class User {
       this.userName = userName
       this.password = password
       this.userInfo = new UserInfo(this)
-      this. wardrobe = new Wardrobe(this)
+      this.wardrobe = new Wardrobe(this)
     }
 
     def addFriend() {
