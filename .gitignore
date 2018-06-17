@@ -31,3 +31,8 @@
 
 # "temporary" build files
 /target
+*.iml
+*.xml
+
+.gradle/
+build/tmp/war/
