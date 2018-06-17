@@ -7,13 +7,14 @@ import dressapp.containers.*
 class BootStrap {
 
    def init = { servletContext ->
-      def user1 = new User('pepe','123456789').save()
-    /*  def wardrobe = new Wardrobe(nombre: 'asd').save()
-     def prenda = new Clothes(name: 'campera piola', mainColour: 'rojo',
-      fabric: 'cuero', description: 'asd', brand: 'asd', size: 'm',
-      picture: 'ruta a la foto', visibleToFriends: 'true', usesCount:'0',
-       owner: user1, wardrobe: wardrobe).save()
-       user1.addToWardrobe(wardrobe)*/
+      def user1 = new User('pepe','123456789').save(failOnError: true)
+      def prenda1 = new Clothes('remera', BodyPart.SHOULDER, 'red','algodon',
+      ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',
+      'ruta',user1, user1.wardrobe).save(failOnError: true)
+
+
+    /*  Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
+        description, size, picture, owner, wardrobe) */
 
 
     }

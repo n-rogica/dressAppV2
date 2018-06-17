@@ -18,7 +18,7 @@ class Wardrobe extends ClothesSuggester {
     Wardrobe(User user) {
       this.user = user
       this.visibleToFriends = true //mover esto al static mapping
-    }
+    }    
 
     def addClothes(Clothes clothesToAdd) {
       this.addToClothes(clothesToAdd) //revisar
