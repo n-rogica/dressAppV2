@@ -31,3 +31,8 @@
 
 # "temporary" build files
 /target
+
+.gradle/
+.idea/
+build/tmp/war/
+dressAppV2.iml
