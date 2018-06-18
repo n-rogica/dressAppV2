@@ -19,6 +19,7 @@ dependencies:
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails.plugins/hibernate5/6.1.9/3ad17a7ecdc78dd76624439ded9fb92c675dbc38/hibernate5-6.1.9.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-core/5.1.5.Final/28366d161d448e82370e5bbd871eb2835ba0fb7b/hibernate-core-5.1.5.Final.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails.plugins/gsp/3.3.1/7b40598abe73d8535b2dd4503467d5c0c415b7b5/gsp-3.3.1.jar
+- file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-core/3.2.1/787fbf150eed167b226be8cc3d7c84d0370a5eaa/spring-security-core-3.2.1.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.glassfish.web/el-impl/2.1.2-b03/6bab1211b6e6b191fdbf06067bd05d2f75a62ac0/el-impl-2.1.2-b03.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.197/bb391050048ca8ae3e32451b5a3714ecd3596a46/h2-1.4.197.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jdbc/8.5.29/5fc2bee83633735b31831b7fffa13040100b5eae/tomcat-jdbc-8.5.29.jar
@@ -78,6 +79,9 @@ dependencies:
 - file:/home/agustinblanco/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.3.5/17d86b4a21b9146e3e3b4bd8f9bccf0d7a7e2fbe/grails-plugin-codecs-3.3.5.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-jsp/3.3.1/e45c3adb5f6fc6c7761227457d09114ec41c55fe/grails-web-jsp-3.3.1.jar
+- file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/net.sf.ehcache/ehcache/2.10.4/9022b1eedfafa11039597b1c1918c1abe414df93/ehcache-2.10.4.jar
+- file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.2.5.RELEASE/37dde461931879627d8ca312dc2b698dc1e9d329/spring-security-core-4.2.5.RELEASE.jar
+- file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.2.5.RELEASE/66c07732d421568c8e4ab3f3693b6f87c13c4efd/spring-security-web-4.2.5.RELEASE.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/javax.el/el-api/2.1.2-b03/1ac087d9d1a632d2ff82fa1e8b6610aca025ff2a/el-api-2.1.2-b03.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/8.5.29/61b2514e169d96c7f5c2e1a9cf6901b493fb2301/tomcat-juli-8.5.29.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-core/2.14.8/4e1c17bbfb623fc66df7e5577a0be11973749cd7/asset-pipeline-core-2.14.8.jar
@@ -134,6 +138,7 @@ dependencies:
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/javax.el/javax.el-api/2.2.4/1287562cc3f0ff5439ded6f2949e73ce1c0edaab/javax.el-api-2.2.4.jar
 - file:/home/agustinblanco/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails/grails-codecs/3.3.5/bb53358f64ca12133716c228c4d73e35ad8fdfa2/grails-codecs-3.3.5.jar
+- file:/home/agustinblanco/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.grails/grails-test/3.3.5/b8614dfd03b3c7a3c465775e016e5ffe46bf5056/grails-test-3.3.5.jar
 - file:/home/agustinblanco/.m2/repository/junit/junit/4.12/junit-4.12.jar
 - file:/home/agustinblanco/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.3.16.RELEASE/adb21bf985a998da78de96f6deefe85f058457eb/spring-test-4.3.16.RELEASE.jar
