@@ -31,6 +31,11 @@
 
 # "temporary" build files
 /target
+.DS_Store
+.idea
+.gradle
+/complete/build
+/build
 *.iml
 *.xml
 
