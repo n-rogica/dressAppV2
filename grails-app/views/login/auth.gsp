@@ -88,11 +88,9 @@
     #login .inner .chk {
         height: 12px;
     }
-
-    #login .inner{
-        background: url("https://static1.squarespace.com/static/5433ac62e4b0e2920961b3e6/548eabdde4b08dc6964946d0/596cdd5820099ea7637e734e/1500306785629/18+%284%29.png?format=750w");
-        background-repeat: no-repeat;
-        alignment: center;
+    
+    #login .inner #loginImg{
+        width: 338px;
     }
     </style>
 </head>
@@ -100,6 +98,7 @@
 <body>
 <div id="login">
     <div class="inner">
+        <img id="loginImg" src="${createLink(controller: 'login', action: 'showImage')}"/>
         <div class="fheader"><g:message code='application.logIn'/></div>
 
         <g:if test='${flash.message}'>
