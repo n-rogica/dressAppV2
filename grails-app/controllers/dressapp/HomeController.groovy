@@ -7,13 +7,12 @@ import grails.plugin.springsecurity.annotation.Secured
 class HomeController {
 
     def index() {
-        def user = User.findByUsername("agus")
-        if (user == null) {
-            render "error"
-        } else {
-            render (view: "index.gsp", model:[user: user])
-        }
-
-
+      String loggedUserName = getPrincipal().username
+      def loggedUser = User.findByUsername(loggedUserName)
+      if (loggedUser == null) {
+        render "no encontro al usuario"
+        return
+      }
+      render (view: 'index.gsp', model:[loggedUser: loggedUser])
     }
 }

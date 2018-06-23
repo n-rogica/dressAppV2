@@ -22,15 +22,21 @@ class BootStrap {
        Role role = new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
        UserRole.create(user,role)
        UserRole.create(admin,role)
-           def prenda1 = new Clothes('remera', BodyPart.SHOULDER, 'red','algodon',
-      ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',
-      'ruta',user, user.wardrobe).save(failOnError: true)
-           def prenda2 = new Clothes('buzo', BodyPart.SHOULDER, 'red','algodon',
-                   ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',
-                   'ruta',user, user.wardrobe).save(failOnError: true)
-           def prenda3 = new Clothes('saco', BodyPart.SHOULDER, 'red','algodon',
-                   ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',
-                   'ruta',user, user.wardrobe).save(failOnError: true)
+       def prenda1 = new Clothes('remera',BodyPart.SHOULDER,'red','algodon',
+        ColdResistance.NOTHING,Formality.INFORMAL,'asd','M','ruta',
+        user, user.wardrobe).save(failOnError: true)
+       def prenda2 = new Clothes('buzo', BodyPart.SHOULDER, 'red','algodon',
+        ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M','ruta',
+        user, user.wardrobe).save(failOnError: true)
+       def prenda3 = new Clothes('saco', BodyPart.SHOULDER, 'red','algodon',
+        ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M', 'ruta',
+        user, user.wardrobe).save(failOnError: true)
+
+        new File('grails-app/conf/convertcsv.csv').eachCsvLine {tokens ->
+          new User(tokens[0], tokens[1]).save(failOnError:true)}
+
+
+
     }
     def destroy = {
     }
