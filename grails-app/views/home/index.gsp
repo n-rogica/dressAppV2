@@ -13,8 +13,9 @@
         <ul>
           <li><g:link controller="user" action="index">Users</g:link></li>
           <li><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
-          <li><g:link controller="clothes" action="index">clothes</g:link></li>          
-        </ul>
+          <li><g:link controller="clothes" action="index">clothes</g:link></li>
+          <li> <img src="${createLink(controller: 'home', action: 'showImage')}"/></li>
+        </ul>    
     </section>
 </div>
 
