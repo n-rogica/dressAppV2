@@ -89,9 +89,10 @@
         height: 12px;
     }
 
-    #login {
-        background: url(wardrobe.png);
-        background-size: contain;
+    #login .inner{
+        background: url("https://static1.squarespace.com/static/5433ac62e4b0e2920961b3e6/548eabdde4b08dc6964946d0/596cdd5820099ea7637e734e/1500306785629/18+%284%29.png?format=750w");
+        background-repeat: no-repeat;
+        alignment: center;
     }
     </style>
 </head>
@@ -99,6 +100,7 @@
 <body>
 <div id="login">
     <div class="inner">
+        <img src="../../assets/images/login.jpeg">
         <div class="fheader"><g:message code='application.name'/></div>
 
         <g:if test='${flash.message}'>
