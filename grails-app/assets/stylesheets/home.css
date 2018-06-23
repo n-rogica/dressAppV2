@@ -1,4 +1,11 @@
 
+
+#content {
+    display: flex;
+    flex-direction: row;
+    background: white;
+}
+
 .home-back {
     background: url(../images/login.jpeg) 50% 50% no-repeat transparent;
 }

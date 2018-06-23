@@ -36,7 +36,9 @@ pre {
 }
 .navbar-default a {
     color: #ffffff !important;
-    font-size: 18px !important;
+    font-size: 26px !important;
+    font-family: fantasy;
+    font-style: oblique;
     text-decoration: none;
 }
 .grails-icon img {
@@ -44,7 +46,7 @@ pre {
 
 }
 .navbar-default, .navbar-static-top {
-    background-color: #424649;
+    background-color: #9bcbef;
     border: 0px;
 }
 a.navbar-brand {

@@ -100,8 +100,7 @@
 <body>
 <div id="login">
     <div class="inner">
-        <img src="../../assets/images/login.jpeg">
-        <div class="fheader"><g:message code='application.name'/></div>
+        <div class="fheader"><g:message code='application.logIn'/></div>
 
         <g:if test='${flash.message}'>
             <div class="login_message">${flash.message}</div>
@@ -116,12 +115,6 @@
             <p>
                 <label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
                 <input type="password" class="text_" name="${passwordParameter ?: 'password'}" id="password"/>
-            </p>
-
-            <p>
-                <label for="coordinateValue">POS</label>
-                <input type="hidden" name="coordinatePosition" id="coordinatePosition" value="${position}"/>
-                <input type="text" class="text_" name="coordinateValue" id="coordinateValue"/>
             </p>
 
             <p id="remember_me_holder">

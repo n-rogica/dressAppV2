@@ -83,8 +83,18 @@ img {
     border: none;
 }
 
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title h1{
+    margin-left: 15px;
+}
+
 .footer {
-    background: #424649;
+    background: #9bcbef;
     color: #ffffff;
     clear: both;
     font-size: 0.8em;
