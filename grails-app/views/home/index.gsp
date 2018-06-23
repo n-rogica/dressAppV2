@@ -4,18 +4,39 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Dressapp Home</title>
+    <link rel="stylesheet" href="${resource(file: 'home.css')}" type="text/css">
 </head>
+
 <body>
 
 <div id="content" role="main">
-    <section class="row colset-2-its">
-        <h2><g:message code="user.welcome.label" args="[loggedUser.username]" /> </h2>
-        <ul>
-          <li><g:link controller="user" action="index">Users</g:link></li>
-          <li><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
-          <li><g:link controller="clothes" action="index">clothes</g:link></li>
-          <li> <img src="${createLink(controller: 'home', action: 'showImage')}"/></li>
-        </ul>    
+    <section class="row">
+        <div class="home-welcome">
+            <div id="first">
+                <h2><g:message code="user.welcome.label" args="[loggedUser.username]"/></h2>
+
+                <h3><g:message code="user.welcome.day.suggestion"/></h3>
+                <img src="${createLink(controller: 'home', action: 'showImage')}"/>
+                <button type="button">Otra</button>
+            </div>
+
+            <div id="second">
+                <ul>
+                    <li>Fecha:</li>
+                    <li>Temperatura:</li>
+                    <li><g:link controller="clothes" action="index">Ubicacion:</g:link></li>
+                </ul>
+
+                <div>
+                    <ul>
+                        <li><g:link controller="user" action="index">Users</g:link></li>
+                        <li><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
+                        <li><g:link controller="clothes" action="index">clothes</g:link></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </section>
 </div>
 

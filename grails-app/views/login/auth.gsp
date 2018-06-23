@@ -10,13 +10,12 @@
     }
 
     #login .inner {
-        /*background-image: url("wardrobe.png");*/
         width: 340px;
         padding-bottom: 6px;
         margin: 60px auto;
         text-align: left;
         border: 1px solid #aab;
-        /*background-color: #f0f0fa;*/
+        /*background-color: #c0e7ef;*/
         -moz-box-shadow: 2px 2px 2px #eee;
         -webkit-box-shadow: 2px 2px 2px #eee;
         -khtml-box-shadow: 2px 2px 2px #eee;
@@ -88,7 +87,7 @@
     #login .inner .chk {
         height: 12px;
     }
-    
+
     #login .inner #loginImg{
         width: 338px;
     }

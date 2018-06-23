@@ -1,11 +1,29 @@
 
 
 #content {
-    display: flex;
-    flex-direction: row;
     background: white;
 }
 
-.home-back {
-    background: url(../images/login.jpeg) 50% 50% no-repeat transparent;
+.home-welcome {
+    display: flex;
+    flex-direction: row;
+}
+
+.home-welcome #first h2{
+    font-size: 30px;
+}
+
+.home-welcome #first{
+    display: flex;
+    flex-direction: column;
+}
+
+.home-welcome #second{
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+}
+
+.home-welcome #second div{
+    margin-top: 20px;
 }
