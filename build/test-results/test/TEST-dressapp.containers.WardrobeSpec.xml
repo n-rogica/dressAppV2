@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dressapp.containers.WardrobeSpec" tests="1" skipped="0" failures="1" errors="0" timestamp="2018-06-12T15:02:53" hostname="nico-N53SV" time="0.002">
+<testsuite name="dressapp.containers.WardrobeSpec" tests="1" skipped="0" failures="1" errors="0" timestamp="2018-06-19T22:54:13" hostname="pmitn009865" time="0.073">
   <properties/>
-  <testcase name="test something" classname="dressapp.containers.WardrobeSpec" time="0.002">
-    <failure message="Condition not satisfied:&#10;&#10;true == false&#10;     |&#10;     false&#10;" type="org.spockframework.runtime.SpockComparisonFailure">Condition not satisfied:
-
-true == false
-     |
-     false
-
-	at dressapp.containers.WardrobeSpec.test something(WardrobeSpec.groovy:16)
+  <testcase name="test hay 3 prendas" classname="dressapp.containers.WardrobeSpec" time="0.073">
+    <failure message="groovy.lang.MissingPropertyException: No such property: user for class: dressapp.containers.WardrobeSpec" type="groovy.lang.MissingPropertyException">groovy.lang.MissingPropertyException: No such property: user for class: dressapp.containers.WardrobeSpec
+	at dressapp.containers.WardrobeSpec.setup(WardrobeSpec.groovy:14)
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>

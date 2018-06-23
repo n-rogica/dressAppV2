@@ -1,8 +1,11 @@
 package dressapp.clothes
 
+import dressapp.users.User
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+@Secured("ROLE_ADMIN")
 class ClothesController {
 
     ClothesService clothesService
@@ -12,6 +15,13 @@ class ClothesController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond clothesService.list(params), model:[clothesCount: clothesService.count()]
+    }
+
+    def mostramePrendas(String userName){
+        def user = User.findByUsername("agus")
+        def clothes = Clothes.findByUser(user)
+        print "asd"
+
     }
 
     def show(Long id) {

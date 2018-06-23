@@ -35,4 +35,6 @@ class Wardrobe extends ClothesSuggester {
     Clothes generateClothSuggestion() {
       return "cloth suggestion"
     }
+
+
 }

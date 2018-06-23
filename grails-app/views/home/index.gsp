@@ -9,12 +9,13 @@
 
 <div id="content" role="main">
     <section class="row colset-2-its">
-        <h1>Dressapp</h1>        
+        <h1>Dressapp</h1>
+        <h2><g:message code="user.welcome.label" args="[user]" /> </h2>
         <ul>
           <li><g:link controller="user" action="index">Users</g:link></li>
           <li><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
           <li><g:link controller="clothes" action="index">clothes</g:link></li>
-
+        </ul>
     </section>
 </div>
 
