@@ -206,6 +206,111 @@ class ClothesController {
         respond clothesService.list(params), model:[clothesCount: clothesService.count()]
     }
 
+    def generarPrendas() {
+      String loggedUserName = getPrincipal().username
+      def loggedUser = User.findByUsername(loggedUserName)
+      def nombrePrenda
+      BodyPart bodyPart
+      def color
+      def fabric
+      def coldResistance
+      def formality
+      def description
+      def size = "M"
+      def ruta = ""
+      def i
+
+      //head
+      for (i = 0; i < 10; i++) {
+        nombrePrenda = setHead[random.nextInt(setHead.size())]
+        bodyPart = BodyPart.HEAD
+        color = setColor[random.nextInt(setColor.size())]
+        fabric = ""
+        description = nombrePrenda
+        if (random.nextInt(1) == 0) {
+          coldResistance = ColdResistance.values()[random.nextInt(2)]
+          formality = Formality.values()[random.nextInt(2)]
+          clothesService.save(new Clothes(nombrePrenda, bodyPart, color, fabric, coldResistance, formality, description, size, ruta, loggedUser, loggedUser.wardrobe))
+        }
+      }
+
+      //neck
+      for (i = 0; i < 10; i++) {
+        nombrePrenda = setNeck[random.nextInt(setNeck.size())]
+        bodyPart = BodyPart.NECK
+        color = setColor[random.nextInt(setColor.size())]
+        fabric = ""
+        description = nombrePrenda
+        if (random.nextInt(1) == 0) {
+          coldResistance = ColdResistance.values()[random.nextInt(4)+ 1]
+          formality = Formality.values()[random.nextInt(3)+ 1]
+          clothesService.save(new Clothes(nombrePrenda, bodyPart, color, fabric, coldResistance, formality, description, size, ruta, loggedUser, loggedUser.wardrobe))
+        }
+      }
+
+      //hands
+      for (i = 0; i < 10; i++) {
+        nombrePrenda = setHands[random.nextInt(setHands.size())]
+        bodyPart = BodyPart.HANDS
+        color = setColor[random.nextInt(setColor.size())]
+        fabric = ""
+        description = nombrePrenda
+        if (random.nextInt(1) == 0) {
+          coldResistance = ColdResistance.values()[random.nextInt(4)+ 2]
+          formality = Formality.values()[random.nextInt(3)+ 1]
+          clothesService.save(new Clothes(nombrePrenda, bodyPart, color, fabric, coldResistance, formality, description, size, ruta, loggedUser, loggedUser.wardrobe))
+        }
+      }
+
+      //chest
+      for (i = 0; i < 10; i++) {
+        nombrePrenda = setChest[random.nextInt(setChest.size())]
+        bodyPart = BodyPart.CHEST
+        color = setColor[random.nextInt(setColor.size())]
+        fabric = "algodon"
+        description = nombrePrenda
+        if (setChestAbrigo.contains(nombrePrenda)) {
+            coldResistance = ColdResistance.values()[random.nextInt(4) + 6]
+        } else {
+           coldResistance = ColdResistance.values()[random.nextInt(4)]
+        }
+        formality = Formality.values()[random.nextInt(5)]
+        clothesService.save(new Clothes(nombrePrenda, bodyPart, color, fabric, coldResistance, formality, description, size, ruta, loggedUser, loggedUser.wardrobe))
+      }
+
+      //legs
+      for (i = 0; i < 10; i++) {
+        nombrePrenda = setLegs[random.nextInt(setLegs.size())]
+        bodyPart = BodyPart.LEGS
+        color = setColor[random.nextInt(setColor.size())]
+        fabric = ""
+        description = nombrePrenda
+        if (setLegsAbrigo.contains(nombrePrenda)) {
+            coldResistance = ColdResistance.values()[random.nextInt(4) + 6]
+        } else {
+           coldResistance = ColdResistance.values()[random.nextInt(4)]
+        }
+        formality = Formality.values()[random.nextInt(5)]
+        clothesService.save(new Clothes(nombrePrenda, bodyPart, color, fabric, coldResistance, formality, description, size, ruta, loggedUser, loggedUser.wardrobe))
+      }
+
+      //feets
+      for (i = 0; i < 10; i++) {
+        nombrePrenda = setFeets[random.nextInt(setFeets.size())]
+        bodyPart = BodyPart.FEETS
+        color = setColor[random.nextInt(setColor.size())]
+        fabric = ""
+        description = nombrePrenda
+        coldResistance = ColdResistance.values()[random.nextInt(4)]
+        formality = Formality.values()[random.nextInt(3)]
+        clothesService.save(new Clothes(nombrePrenda, bodyPart, color, fabric, coldResistance, formality, description, size, ruta, loggedUser, loggedUser.wardrobe))
+      }
+
+      render "se generaron las prendas"
+    }
+
+
+
     def mostramePrendas(String userName){
         def user = User.findByUsername("agus")
         def clothes = Clothes.findByUser(user)
