@@ -45,12 +45,28 @@ class User implements Serializable {
       this.wardrobe = new Wardrobe(this)
     }
 
-    def addFriend() {
-        return "add friend"
+    def addFriend(User otherUser) {
+        this.addToFriends(otherUser)
     }
 
     def acceptFriend() {
       return "acceptFriend"
+    }
+
+    boolean isFriend(User otherUser) {
+      if (this.friends == null) {
+        return false
+      }
+      //completar esta funcion
+      return true
+    }
+
+    void makeWardrobePrivate() {
+      this.wardrobe.visibleToFriends = false
+    }
+
+    int friendsCount() {
+      return this.friends?.size() ?: 0
     }
 
     static mapping = {

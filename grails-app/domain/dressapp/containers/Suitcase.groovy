@@ -14,6 +14,15 @@ class Suitcase {
     static constraints = {
     }
 
+    Suitcase(String addresTo, String fromDate, String toDate,
+       Wardrobe wardrobe) {
+      this.addresTo = addresTo
+      this.fromDate = new Date().parse("dd/MM/yyyy", fromDate)
+      this.toDate = new Date().parse("dd/MM/yyyy", toDate)
+      this.wardrobe = wardrobe
+      this.active = true //revisar 
+    }
+
     def addClothes(Clothes clothesToAdd) {
       return "agregando ropa"
     }

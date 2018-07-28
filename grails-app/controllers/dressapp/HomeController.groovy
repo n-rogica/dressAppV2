@@ -53,7 +53,7 @@ class HomeController {
       def getAllImages() {
         /*este seria el paso uno, en donde se levanta la carpeta y se las devuelve como una lista de imagenes, esto debería estar
         definido en el metodo index del controlador que necesita mostrar muchas fotos*/
-        private static final File IMAGES_DIR = new File('/src/main/webapp') //levanto la carpeta
+        File IMAGES_DIR = new File('/src/main/webapp') //levanto la carpeta
               [images: IMAGES_DIR.listFiles()] // 'images' es la variable que el controlador le pasa a la vista con la lista de archivos
 
         /*esta idea de recolectar todas las imagenes y pasarlas en una lista a la vista
@@ -61,7 +61,7 @@ class HomeController {
         sino por ejemplo quiere buscar las fotos correspondientes a las prendas de todos los usuarios que se encuentran
         en x region, en ese caso uno definiría la busqueda y con cada prenda la agrega a la lista, siendo ambicioso
         uno podría a crear un objeto de trasnferecia donde por ejemplo incluye la ruta y el id o el nombre del usuario
-        o de la prenda por si es necesario obtener input del usuario para decidir como proseguir*/        
+        o de la prenda por si es necesario obtener input del usuario para decidir como proseguir*/
       }
 
       def displayImage() {
