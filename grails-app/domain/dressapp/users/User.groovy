@@ -20,6 +20,7 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+
     static hasOne = [userInfo: UserInfo, wardrobe: Wardrobe]
     static hasMany = [friends: User, events: Event]
 
@@ -47,18 +48,21 @@ class User implements Serializable {
 
     def addFriend(User otherUser) {
         this.addToFriends(otherUser)
+        if (!otherUser.isFriend(this)) {
+          otherUser.addToFriends(this)
+        }
     }
 
-    def acceptFriend() {
-      return "acceptFriend"
+    def removeFriend(User otherUser) {
+      this.removeFromFriends(otherUser)
+      otherUser.removeFromFriends(this)
     }
 
     boolean isFriend(User otherUser) {
       if (this.friends == null) {
         return false
       }
-      //completar esta funcion
-      return true
+      return this.friends.contains(otherUser)
     }
 
     void makeWardrobePrivate() {

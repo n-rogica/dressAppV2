@@ -75,8 +75,9 @@ class WardrobeSpec extends Specification implements DomainUnitTest<Wardrobe>, Da
         testUser1.wardrobe.generateSuitcase("bariloche","27/9/2018","5/10/2018")
 
       expect:
-        testUser2.wardrobe.countSuitcases() == 0
+        testUser1.wardrobe.countSuitcases() == 1 &&
+          testUser2.wardrobe.countSuitcases() == 0
     }
 
-    
+
 }

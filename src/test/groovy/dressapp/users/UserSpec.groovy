@@ -60,7 +60,17 @@ class UserSpec extends Specification implements DomainUnitTest<User> {
       given:
         user1.addFriend(user2)
       expect:
-        user1.isFriend(user2)
+        user1.isFriend(user2) && user2.isFriend(user1)
+    }
+
+    void "test se elimina la relacion de amistad"() {
+      given:
+        user1.addFriend(user2)
+        user1.removeFriend(user2)
+      expect:
+        !user1.isFriend(user2) && !user2.isFriend(user1) &&
+          user1.friendsCount() == 0  && user2.friendsCount() == 0
+
     }
 
 
