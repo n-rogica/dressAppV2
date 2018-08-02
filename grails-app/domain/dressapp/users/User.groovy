@@ -54,8 +54,13 @@ class User implements Serializable {
     }
 
     def removeFriend(User otherUser) {
-      this.removeFromFriends(otherUser)
-      otherUser.removeFromFriends(this)
+      if (this.friends != null) {
+        this.removeFromFriends(otherUser)
+      }
+
+      if (otherUser.friends != null) {
+        otherUser.removeFromFriends(this)
+      }      
     }
 
     boolean isFriend(User otherUser) {

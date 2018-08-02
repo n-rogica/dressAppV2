@@ -1,6 +1,6 @@
 import dressapp.clothes.Clothes
 
-abstract class ClothesManager {
+abstract class ClothesManager {  
   static hasMany = [clothes: Clothes]
 
   /*tal vez este metodo deberia recibir un map con los datos de la prenda

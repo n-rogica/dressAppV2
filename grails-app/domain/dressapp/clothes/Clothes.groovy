@@ -51,10 +51,14 @@ class Clothes {
         this.size = size
         this.picture = picture
         this.owner = owner
-        this.wardrobe = wardrobe
+        this.wardrobe = wardrobe        
         this.visibleToFriends = true /*esto hay que forzarlo porque no
          toma el valor por defecto en el mapping, el jueves lo consulto*/
          this.status = Status.AVAILABLE // idem anterior
-      }
+    }
+
+
+
+
 
 }
