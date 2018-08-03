@@ -1,14 +1,28 @@
 import dressapp.clothes.Clothes
 
-abstract class ClothesManager {  
+abstract class ClothesManager {
+  /*esta lista y la de outfits en ClothesSuggester pueden o no estar,
+  en algunos casos por ahi aceleran el proceso de busqueda, por ejemplo
+  para los outfits con la lista uno sabe rapidamente cuales son las prendas
+  que lo componene, en cambio usando directamente la relacion hay que
+  laburar un poco porque habria que hacer algo como
+  def listaPrendasDelOutfit = Clothes.findAllBySarasa()
+  o meter una consulta directamente
+  */
+  List<Clothes> clothes
   static hasMany = [clothes: Clothes]
 
-  /*tal vez este metodo deberia recibir un map con los datos de la prenda
-  (suponiendo que hay un form en el front) y que en la implementacion del metodo
-  se llame al constructor de clothes, de esta forma las relaciones con el owner
-  y el wardrobe en donde se encuentra la prenda se establecen directamente
-  en el constructor de clothes en lugar de tener que setearlas a mano en
-  la implementacion del metodo addClothes*/
+  /*me parece que aca se tendria que definir otro metodo addClothes que reciba
+  un map con los valores, suponiendo que desde el front viene un form, ya que
+  por la restriccion de las relaciones en la base de datos, una prenda
+  tiene que tener designada un owner y un wardrobe al cual pertenecen
+  esto obliga de alguna manera a asignar en el constructor de clothes
+  estas variables/relaciones por lo que para el caso del wardrobe se vuelve redundante
+  el hecho de que exista este metodo. Este no es el caso para la valija
+  y los conjuntos. En esos casos si es coherente indicar cual es la prenda
+  porque se supone que ya esta creada. Tambien se podría quitar esta restriccion
+  y que una prenda se pueda crear con owner y wardrobe en null y asumir que nunca
+  va a intentar guardarse en la base de datos una prenda en esas condiciones*/
   abstract def addClothes(Clothes clothesToAdd)
   abstract def deleteClothes(Clothes clothesToDelete)
 }

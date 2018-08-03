@@ -4,7 +4,7 @@ import groovy.transform.EqualsAndHashCode
 import dressapp.clothes.Clothes
 import dressapp.users.User
 
-
+@EqualsAndHashCode(includes='visibleToFriends,user,clothes,outfits,suitcases')
 class Wardrobe extends ClothesSuggester {
 
     boolean visibleToFriends
@@ -17,6 +17,8 @@ class Wardrobe extends ClothesSuggester {
 
     Wardrobe(User user) {
       this.user = user
+      this.clothes = []
+      this.outfits = []
       this.visibleToFriends = true //mover esto al static mapping
     }
 
@@ -29,12 +31,11 @@ class Wardrobe extends ClothesSuggester {
     }
 
     int clothesCount() {
-      //esto no es muy elegante pero por la forma en que estan definidas
-      //las abstracciones no se puede hacer un this.clothes,
-      //para poder hacer eso habria que mover la coleccion del clothes manager/ClothesSuggester
-      //a las clases wardrobe outfit y suitcase respectivamente
-      def prendas = Clothes.findAllByWardrobe(this)
-      return prendas.size()
+      //forma vieja, cuando las clases abstractas no tenian las listas
+      //def prendas = Clothes.findAllByWardrobe(this)
+      //return prendas.size()
+
+      return this.clothes.size()
     }
 
     int countSuitcases() {
@@ -42,7 +43,7 @@ class Wardrobe extends ClothesSuggester {
     }
 
     void generateSuitcase(String address, String fromDate, String toDate) {
-      this.addToSuitcases(new Suitcase(address,fromDate,toDate,this))      
+      this.addToSuitcases(new Suitcase(address,fromDate,toDate,this))
     }
 
     Outfit generateSuggestion() {

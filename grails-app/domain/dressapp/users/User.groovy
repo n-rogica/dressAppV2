@@ -60,7 +60,7 @@ class User implements Serializable {
 
       if (otherUser.friends != null) {
         otherUser.removeFromFriends(this)
-      }      
+      }
     }
 
     boolean isFriend(User otherUser) {
@@ -72,6 +72,14 @@ class User implements Serializable {
 
     void makeWardrobePrivate() {
       this.wardrobe.visibleToFriends = false
+    }
+
+    void makeWardrobePublic() {
+      this.wardrobe.visibleToFriends = true
+    }
+
+    boolean isWardrobePublic() {
+      return this.wardrobe.visibleToFriends
     }
 
     int friendsCount() {

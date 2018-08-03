@@ -4,6 +4,7 @@ import dressapp.users.User
 import dressapp.containers.Wardrobe
 
 import grails.testing.gorm.DomainUnitTest
+import grails.testing.gorm.DataTest
 import spock.lang.Specification
 
 

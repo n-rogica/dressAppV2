@@ -55,6 +55,16 @@ class WardrobeSpec extends Specification implements DomainUnitTest<Wardrobe>, Da
         testUser1.wardrobe.visibleToFriends == false
     }
 
+    void "test el wardrobe se puede volver publico"() {
+      given:
+        testUser1.makeWardrobePrivate()
+        if (!testUser1.wardrobe.visibleToFriends) {
+          testUser1.makeWardrobePublic()
+        }
+      expect:
+        testUser1.wardrobe.visibleToFriends == true
+    }
+
     void "test por defecto el wardrobe no tiene suitcases"() {
       expect:
         testUser1.wardrobe.countSuitcases() == 0 &&
@@ -78,6 +88,4 @@ class WardrobeSpec extends Specification implements DomainUnitTest<Wardrobe>, Da
         testUser1.wardrobe.countSuitcases() == 1 &&
           testUser2.wardrobe.countSuitcases() == 0
     }
-
-
 }
