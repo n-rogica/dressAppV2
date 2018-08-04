@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
 
 <style>
     .cloth-box{
@@ -20,14 +19,16 @@
     }
 </style>
 
-<div class="cloth-box">
+<div href="" class="cloth-box">
     <g:render template="/shared/clothImg" />
-    <div>
-        <p class="cloth-desc">Descripcion</p>
-        <p class="cloth-desc">Color</p>
-        <p class="cloth-details">Formalidad:</p>
-        <p class="cloth-details">Resistencia:</p>
-    </div>
+    <g:if test="${cloth != null}">
+        <div>
+            <p class="cloth-desc">${cloth.name}</p>
+            <p class="cloth-desc">${cloth.mainColour}</p>
+            <p class="cloth-details">Formalidad:${cloth.formality}</p>
+            <p class="cloth-details">Resistencia:${cloth.coldResistance}</p>
+        </div>
+    </g:if>
 </div>
 
 </html>
