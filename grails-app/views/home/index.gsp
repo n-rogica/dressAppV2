@@ -28,10 +28,11 @@
                 </ul>
 
                 <div>
-                    <ul>
-                        <li><g:link controller="user" action="index">Users</g:link></li>
-                        <li><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
-                        <li><g:link controller="clothes" action="index">clothes</g:link></li>
+                    <ul style="display: inline-grid;">
+                        <li class="home-buttons"><g:link controller="wardrobe" action="index">Guardarropa</g:link></li>
+                        <li class="home-buttons"><g:link controller="user" action="index">Users</g:link></li>
+                        <li class="home-buttons"><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
+                        <li class="home-buttons"><g:link controller="clothes" action="index">clothes</g:link></li>
                     </ul>
                 </div>
             </div>
