@@ -20,6 +20,7 @@ class Outfit extends ClothesManager{
       this.description = description
       this.usesCount = 0
       this.clothes = []
+      wardrobe.outfits.add(this)
       this.wardrobe = wardrobe
       this.outfitStatus = OutfitStatus.AVAILABLE
     }
@@ -33,7 +34,7 @@ class Outfit extends ClothesManager{
     }
 
     def addClothes(Clothes clothesToAdd) {
-      this.clothes.add(clothesToAdd)      
+      this.clothes.add(clothesToAdd)
     }
     def deleteClothes(Clothes clothesToDelete) {
       return "borrando ropa"
