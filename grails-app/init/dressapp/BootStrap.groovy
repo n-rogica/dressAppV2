@@ -22,14 +22,19 @@ class BootStrap {
        Role role = new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
        UserRole.create(user,role)
        UserRole.create(admin,role)
+
+       def pictureBytes1 = new File("ruta de la foto").bytes
+       def pictureBytes2 = new File("ruta de la foto").bytes
+       def pictureBytes3 = new File("ruta de la foto").bytes
+
        def prenda1 = new Clothes('remera',BodyPart.SHOULDER,'red','algodon',
-        ColdResistance.NOTHING,Formality.INFORMAL,'asd','M','ruta',
+        ColdResistance.NOTHING,Formality.INFORMAL,'asd','M',pictureBytes1,
         user, user.wardrobe).save(failOnError: true)
        def prenda2 = new Clothes('buzo', BodyPart.SHOULDER, 'red','algodon',
-        ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M','ruta',
+        ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',pictureBytes2,
         user, user.wardrobe).save(failOnError: true)
        def prenda3 = new Clothes('saco', BodyPart.SHOULDER, 'red','algodon',
-        ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M', 'ruta',
+        ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M', pictureBytes3,
         user, user.wardrobe).save(failOnError: true)
 
            Outfit outfit = new Outfit("", user.wardrobe)

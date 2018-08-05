@@ -2,6 +2,7 @@ package dressapp.clothes
 
 import dressapp.users.User
 import dressapp.containers.*
+import src.main.groovy.*
 
 class Clothes {
 
@@ -41,7 +42,7 @@ class Clothes {
     /*este es un constructor para poder hacer pruebas y hardcodear informacion
     en el archivo boostrap para que haya algo cuando inicia la aplicacion en la base de datos    */
     Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
-      description, size, picture, owner, wardrobe) {
+      description, size, pictureBytes, owner, wardrobe) {
         //en picture deberia venir o la tira de bytes, o el path a la ruta
         this.name = name
         this.bodyPart = bodyPart
@@ -51,10 +52,9 @@ class Clothes {
         this.formality = formality
         this.description = description
         this.size = size
-        this.picture = "asd" //arreglar esto
 
-        /*si lo que viene en picture es la tira de bytes
-        this.picture = picture*/
+        //lo que viene en picture es la tira de bytes
+        this.picture = pictureBytes
 
         /*si lo que viene en picture es la ruta
         this.picture = new File(picture).bytes
