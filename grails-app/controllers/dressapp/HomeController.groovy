@@ -16,6 +16,7 @@ class HomeController {
         return
       }
 
+
       render (view: 'index.gsp', model:[loggedUser: loggedUser])
     }
 

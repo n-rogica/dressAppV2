@@ -1,5 +1,6 @@
 package dressapp.containers
 
+import dressapp.users.User
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
@@ -12,8 +13,10 @@ class WardrobeController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        String loggedUserName = getPrincipal().username
+        def loggedUser = User.findByUsername(loggedUserName)
         params.max = Math.min(max ?: 10, 100)
-        respond wardrobeService.list(params), model:[wardrobeCount: wardrobeService.count()]
+        respond wardrobeService.list(params), model:[wardrobe: loggedUser.getWardrobe()]
     }
 
     def show(Long id) {
