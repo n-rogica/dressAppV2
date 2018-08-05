@@ -14,7 +14,7 @@ class Clothes {
     String description
     String brand
     String size
-    String picture
+    byte[] picture
     Status status
     boolean visibleToFriends
     int usesCount
@@ -35,12 +35,14 @@ class Clothes {
       coldResistance enumType: 'string'
       formality enumType: 'string'
       status enumType: 'string', defaultValue: "'AVAILABLE'" //revisar
+      picture (type: 'image')
     }
 
     /*este es un constructor para poder hacer pruebas y hardcodear informacion
     en el archivo boostrap para que haya algo cuando inicia la aplicacion en la base de datos    */
     Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
       description, size, picture, owner, wardrobe) {
+        //en picture deberia venir o la tira de bytes, o el path a la ruta
         this.name = name
         this.bodyPart = bodyPart
         this.mainColour = mainColour
@@ -49,12 +51,20 @@ class Clothes {
         this.formality = formality
         this.description = description
         this.size = size
-        this.picture = picture
+        this.picture = "asd" //arreglar esto
+
+        /*si lo que viene en picture es la tira de bytes
+        this.picture = picture*/
+
+        /*si lo que viene en picture es la ruta
+        this.picture = new File(picture).bytes
+        */
+
         this.owner = owner
         this.wardrobe = wardrobe
         this.wardrobe.clothes.add(this)
         this.visibleToFriends = true
-         this.status = Status.AVAILABLE 
+        this.status = Status.AVAILABLE
     }
 
 
