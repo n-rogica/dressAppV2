@@ -19,7 +19,7 @@
     }
 </style>
 
-<div href="" class="cloth-box">
+<div class="cloth-box">
     <g:render template="/shared/clothImg" />
     <g:if test="${cloth != null}">
         <div>

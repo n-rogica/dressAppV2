@@ -32,6 +32,12 @@ class BootStrap {
         ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M', 'ruta',
         user, user.wardrobe).save(failOnError: true)
 
+           Outfit outfit = new Outfit("", user.wardrobe)
+           outfit.addClothes(prenda1)
+           outfit.addClothes(prenda2)
+           outfit.addClothes(prenda3)
+           outfit.save(failOnError: true)
+
         new File('grails-app/conf/convertcsv.csv').eachCsvLine {tokens ->
           new User(tokens[0], tokens[1]).save(failOnError:true)}
 

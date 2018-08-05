@@ -7,17 +7,17 @@
     </head>
 
     <style>
-        .cloth-list{
+        .cloth-listt{
             height:500px;
             width:430px;
             border:1px solid #ccc;
             font:16px/26px Georgia, Garamond, Serif;
             overflow:auto;
         }
+
     </style>
 
     <body>
-        <a href="#list-wardrobe" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -25,25 +25,16 @@
             </ul>
         </div>
         <section class="row">
+            <h1><g:message code="default.list.label" args="[wardrobe.user.username]" /></h1>
+            <div style="display: inline-flex">
             <section class="row">
-            <div class="content scaffold-list" role="main">
-                <h1><g:message code="default.list.label" args="[wardrobe.user.username]" /></h1>
-                <div class="cloth-list">
-                    <g:each in="${wardrobe.clothes}">
-                        <g:render template="/shared/clothDescriptionBox" model="[cloth:it]"/>
-                    </g:each>
-                </div>
+                <g:render template="/shared/clothSearchList" model="[clothlist: wardrobe.clothes]"/>
+            %{--</div>--}%
+            </section>
+            <section class="row">
+                <g:render template="/shared/outfitSearchList" model="[outfitlist: wardrobe.outfits]"/>
+            </section>
             </div>
-            </section>
-            <section class="row">
-                <div class="content scaffold-list" role="main">
-                    <h1><g:message code="default.list.label" args="[wardrobe.user.username]" /></h1>
-
-                    <g:each in="${wardrobe.clothes}">
-                        <g:render template="/shared/clothDescriptionBox" model="[cloth:it]"/>
-                    </g:each>
-                </div>
-            </section>
         </section>
     </body>
 </html>
