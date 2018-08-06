@@ -12,9 +12,6 @@
     }
     </style>
 
-    <div>
-        <p><g:message code="default.wardrobe.outfits.label"/></p>
-    </div>
     <div class="cloth-list">
         <g:each in="${outfitlist}">
             <g:render template="/shared/outfitDescriptionBox" model="[outfit: it]"/>

@@ -1,5 +1,6 @@
 package dressapp
 
+import dressapp.clothes.Clothes
 import dressapp.users.User
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.core.io.Resource
@@ -33,6 +34,16 @@ class HomeController {
       <img src="${createLink(controller: 'home', action: 'showImage')}"/>
       */
    }
+
+    def displayimage(){
+
+        def prendaActual = Clothes.findById(params.id)
+
+        response.setHeader('Cache-Control', 'no-cache') /*esto creo que se puede modificar, vi distintos ejemplos con distintas cosas en el header*/
+        response.contentType = '/image/jpeg' /*adaptar al tipo necesario*/
+        response.outputStream << prendaActual.picture
+        response.outputStream.flush()
+    }
 
 
     /*esto que sigue aca es otra opcion, no devuelve la imagen, sino que la muestra por completo en la pagina*/

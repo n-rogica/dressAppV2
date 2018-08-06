@@ -32,6 +32,11 @@
             %{--</div>--}%
             </section>
             <section class="row">
+                <p><g:message code="default.wardrobe.outfits.label"/></p>
+                <div style="display: inline-flex; margin:10px;width:100%">
+                <input type="text" name="searchWardrobe">
+                    <button>Buscar</button>
+                </div>
                 <g:render template="/shared/outfitSearchList" model="[outfitlist: wardrobe.outfits]"/>
             </section>
             </div>

@@ -20,8 +20,8 @@
 </style>
 
 <div class="cloth-box">
-    <g:render template="/shared/clothImg" />
     <g:if test="${cloth != null}">
+        <g:render template="/shared/clothImg" model="[image:cloth]"/>
         <div>
             <p class="cloth-desc">${cloth.name}</p>
             <p class="cloth-desc">${cloth.mainColour}</p>

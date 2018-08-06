@@ -23,9 +23,9 @@ class BootStrap {
        UserRole.create(user,role)
        UserRole.create(admin,role)
 
-       def pictureBytes1 = new File("ruta de la foto").bytes
-       def pictureBytes2 = new File("ruta de la foto").bytes
-       def pictureBytes3 = new File("ruta de la foto").bytes
+       def pictureBytes1 = new File('src/main/webapp/image.jpeg').bytes
+       def pictureBytes2 = new File('src/main/webapp/image3.jpeg').bytes
+       def pictureBytes3 = new File('src/main/webapp/otrafoto.jpeg').bytes
 
        def prenda1 = new Clothes('remera',BodyPart.SHOULDER,'red','algodon',
         ColdResistance.NOTHING,Formality.INFORMAL,'asd','M',pictureBytes1,

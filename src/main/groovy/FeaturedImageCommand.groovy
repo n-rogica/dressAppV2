@@ -1,3 +1,6 @@
+import grails.validation.Validateable
+import org.springframework.web.multipart.MultipartFile
+
 class FeaturedImageCommand implements Validateable {
     MultipartFile featuredImageFile
 

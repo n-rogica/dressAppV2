@@ -11,12 +11,12 @@
 /* resize images */
 .container img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 </style>
 
 <div class="container">
-    <img src="${createLink(controller: 'home', action: 'showImage')}"/>
+    <img src="${createLink(controller: 'home', action: 'displayimage',params:[id: image.id])}"/>
 </div>
 
 </html>
