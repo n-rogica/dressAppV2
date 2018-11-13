@@ -6,7 +6,7 @@
         border: 2px solid black;
         display: inline-flex;
         vertical-align: top;
-        width: 375px;
+        width: 400px;
         margin: 5px;
     }
 
@@ -21,7 +21,7 @@
 
 <div class="cloth-box">
     <g:if test="${cloth != null}">
-        <g:render template="/shared/clothImg" model="[image:cloth]"/>
+        <g:render template="/shared/clothImg" model="[cloth: cloth]"/>
         <div>
             <p class="cloth-desc">${cloth.name}</p>
             <p class="cloth-desc">${cloth.mainColour}</p>

@@ -16,7 +16,9 @@
                 <h2><g:message code="user.welcome.label" args="[loggedUser.username]"/></h2>
 
                 <h3><g:message code="user.welcome.day.suggestion"/></h3>
-                <g:render template="/shared/suggestion" />
+                <g:if test="${outfit != null}">
+                    <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+                </g:if>
                 <button type="button">Otra</button>
             </div>
 

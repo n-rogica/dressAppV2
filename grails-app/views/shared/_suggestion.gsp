@@ -13,8 +13,8 @@
     </style>
 
     <div class="cloth-list">
-        <g:each var="i" in="${ (0..<100) }">
-            <li>${i} <g:render template="/shared/clothDescriptionBox" /></li>
+        <g:each var="i" in="${ (0..< outfit.clothes.size()) }">
+            <g:render template="/shared/clothDescriptionBox" model="[cloth: outfit.clothes.getAt(i)]"/>
         </g:each>
     </div>
 

@@ -16,9 +16,11 @@ class HomeController {
         render "no encontro al usuario"
         return
       }
+        //Aca abajo deberia llamar a la sugerencia
+      def outfit = loggedUser.wardrobe.outfits[0]
 
 
-      render (view: 'index.gsp', model:[loggedUser: loggedUser])
+      render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit])
     }
 
     /*este metodo muestra fotos cuando lo llamas*/
@@ -35,9 +37,9 @@ class HomeController {
       */
    }
 
-    def displayimage(){
+    def displayImage2(){
 
-        def prendaActual = Clothes.findById(params.id)
+        def prendaActual = Clothes.findById(params.img)
 
         response.setHeader('Cache-Control', 'no-cache') /*esto creo que se puede modificar, vi distintos ejemplos con distintas cosas en el header*/
         response.contentType = '/image/jpeg' /*adaptar al tipo necesario*/
@@ -80,17 +82,23 @@ class HomeController {
         /* este es el segundo paso, el metodo que meustra propiamente la imagen, es similar a lo que se hace en
         en el metodo show image solo que aca el new File() lo hace con una ruta que le viene desde la vista
         en la variable params.img*/
-        File image = new File(params.img) //params es una variable de groovy que se carga y se envía desde la vista, 'img' es el nombre que le puse a la variable en la vista
-        if(!image.exists()) {
-          println "Foto ${params.img} no encontrada"
-          response.status = 404
-          return
+        try {
+            String imageId = String.valueOf(params.cloth.value).split(':').last().replace(' ','')
+            def cloth = Clothes.findById(Integer.valueOf(imageId)).picture
+//          File image = new File(params.cloth) //params es una variable de groovy que se carga y se envía desde la vista, 'img' es el nombre que le puse a la variable en la vista
+//        if(!image.exists()) {
+//          println "Foto ${params.cloth} no encontrada"
+//          response.status = 404
+//          return
+//        }
+            //se encontro la foto
+            response.setHeader('Cache-Control', 'no-cache')
+            response.contentType = '/image/jpeg' //adaptar segun se necesite
+            response.outputStream << cloth
+            response.outputStream.flush()
+        } catch (Exception e){
+            System.out.println(e.stackTrace)
         }
-        //se encontro la foto
-        response.setHeader('Cache-Control', 'no-cache')
-        response.contentType = '/image/jpeg' //adaptar segun se necesite
-        response.outputStream << image.bytes
-        response.outputStream.flush()
       }
 
       /* en el gsp esto se implementa de la siguiente manera

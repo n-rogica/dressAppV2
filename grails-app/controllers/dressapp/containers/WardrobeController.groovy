@@ -15,7 +15,7 @@ class WardrobeController {
     def index(Integer max) {
         String loggedUserName = getPrincipal().username
         def loggedUser = User.findByUsername(loggedUserName)
-        params.max = Math.min(max ?: 10, 100)
+//        params.max = Math.min(max ?: 10, 100)
         respond wardrobeService.list(params), model:[wardrobe: loggedUser.getWardrobe()]
     }
 
