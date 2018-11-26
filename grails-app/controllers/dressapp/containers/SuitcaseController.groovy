@@ -72,6 +72,14 @@ class SuitcaseController {
         }
     }
 
+    def showImage() {
+        File file = new File('src/main/webapp/maleta.jpg')
+        response.setHeader('Cache-Control', 'no-cache')
+        response.contentType = '/image/jpeg' /*adaptar al tipo necesario*/
+        response.outputStream << file.bytes
+        response.outputStream.flush()
+    }
+
     def delete(Long id) {
         if (id == null) {
             notFound()

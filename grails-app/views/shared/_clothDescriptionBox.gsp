@@ -17,6 +17,7 @@
     .cloth-details{
         font-size: 15px;
     }
+
 </style>
 
 <div class="cloth-box">

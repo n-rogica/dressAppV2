@@ -33,7 +33,7 @@
                     <ul style="display: inline-grid;">
                         <li class="home-buttons"><g:link controller="wardrobe" action="index">Guardarropa</g:link></li>
                         <li class="home-buttons"><g:link controller="user" action="index">Users</g:link></li>
-                        <li class="home-buttons"><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
+                        <li class="home-buttons"><g:link controller="suitcase" action="index">Suitcase</g:link></li>
                         <li class="home-buttons"><g:link controller="clothes" action="index">clothes</g:link></li>
                     </ul>
                 </div>

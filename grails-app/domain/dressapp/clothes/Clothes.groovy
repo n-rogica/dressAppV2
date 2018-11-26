@@ -52,6 +52,7 @@ class Clothes {
         this.formality = formality
         this.description = description
         this.size = size
+        this.status = Status.AVAILABLE
 
         //lo que viene en picture es la tira de bytes
         this.picture = pictureBytes

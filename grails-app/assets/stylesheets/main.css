@@ -582,3 +582,21 @@ img.grails-logo {
     height:340px;
     margin-top:-10px;
 }
+
+.suitcase-form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin:0 auto;
+}
+
+.suitcase-button{
+    border: 2px solid black;
+    background-color: #262626;
+    -webkit-text-fill-color: white;
+}
+
+.trip-form{
+    border: 3px solid #9bcbef;
+    margin-top: 5px;
+}
