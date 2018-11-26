@@ -1,0 +1,44 @@
+En el archivo grails-app/conf/application.yml
+
+En la linea 98  editar
+
+environments:
+    development:
+        dataSource:
+            dbCreate: create-drop
+            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+
+
+por 
+environments:
+    development:
+        dataSource:
+            dbCreate: update
+            url: jdbc:h2:file:~/DressAppDB;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+
+Las secciones test y production dejarlas como estan.
+
+~/DressAppDB con esta ruta se crea un archivo de nombre 'DressAppDB.mv.db' en la carpeta home, editar
+por lo que se desee.
+
+Para poder ver lo que hay en la base, con la aplicacion corriendo ir a http://localhost:8080/dbconsole/
+en el campo JDBC URL poner lo siguiente 'jdbc:h2:file:~/DressAppDB;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE' (modificar la ruta acorde a lo
+especificado)
+
+Tener en cuenta que lo que hay en boostrap.groovy se va a correr cada vez que inicie la aplicación
+para evitar problemas causados por claves repetidas o que se creen datos duplicados conviene
+comentar los comandos para cargar datos dentro del método init una vez que ya estan los datos
+en la base. 
+
+Si por alguna razon se quiere empezar de nuevo, basta con borrar el archivo y volver a correr la aplicacion.
+
+No probé a modificar las tablas agregando o sacando columnas, en este caso el procedimiento deberia ser 
+desde la consola agregar el sql para el alter table, editar las clases del dominio correspondiente, levantar de nuevo la 
+aplicacion. En si esto es para poder mantener la informacion que ya está en la base, si no trae problemas
+lo ideal seria borrar la base, modificar las entidades del dominio y los metodos necesarios y despues volver a correr
+la aplicacion.
+
+
+
+
+jdbc:h2:file:~/DressAppDB;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
