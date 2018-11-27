@@ -16,6 +16,10 @@ class SuitcaseController {
         respond suitcaseService.list(params), model:[suitcaseCount: suitcaseService.count()]
     }
 
+    def suggestion(){
+        respond suitcaseService.list(params), model:[suitcaseCount: suitcaseService.count()]
+    }
+
     def show(Long id) {
         respond suitcaseService.get(id)
     }

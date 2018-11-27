@@ -28,7 +28,7 @@
                     <div style="width:400px; margin:0 auto;">
                         <img class="trip-image" src="${createLink(controller: 'suitcase', action: 'showImage')}"/>
                     </div>
-                    <form id="trip-form" action="/action_page.php">
+                    <form id="trip-form" action="/suitcase/suggestion">
                         A donde vamos?<br>
                         <select name="where" form="trip-form">
                             <option value="volvo">Volvo</option>
