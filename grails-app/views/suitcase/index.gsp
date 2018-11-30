@@ -65,7 +65,7 @@
                                value="2018-12-04"
                                min="2018-12-03" max="2030-12-31">
                         <br>
-                        <h2 class="title">Categorias Importantes:</h2>
+                        <h2 class="title">Seleccione acorde al tipo de viaje:</h2>
                         <div class="grid-container options">
                             <g:each in="${categories}">
                                 <div><input class="grid-item" type="checkbox" name="category" value="${it}"><g:message code="suitcase.category.${it}"/></div>

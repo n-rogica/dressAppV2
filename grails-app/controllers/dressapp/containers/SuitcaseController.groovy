@@ -19,16 +19,20 @@ class SuitcaseController {
     }
 
     def suggestion(){
+        String categoriesString = ""
         String whereTo = params.get("where")
         String fromDate = params.get("trip-start")
         String toDate = params.get("trip-end")
         String amount = params.get("quantity")
         List<String> categories = params.get("category")
+        if(categories){
+            categoriesString = categories.join(",")
+        }
         Wardrobe wardrobe = dressapp.users.User.findByUsername(getPrincipal().username).getWardrobe()
 
         Suitcase suitcase = new Suitcase(whereTo,fromDate, toDate, wardrobe)
 
-        respond suitcaseService.list(params), model:[suitcase: suitcase]
+        respond suitcaseService.list(params), model:[suitcase: suitcase, amount: amount, categories: categories]
     }
 
     def show(Long id) {

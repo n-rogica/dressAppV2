@@ -20,6 +20,15 @@
             width: 300px;
             margin-left: 90px;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            margin-left: 10px;
+        }
+        .grid-item {
+            font-size: 14px;
+            text-align: center;
+        }
     </style>
     </head>
     <body>
@@ -33,9 +42,16 @@
                 <div style=" display: flex">
                     <div>
                 <h1>VALIJAS</h1>
-                        <div style=" display: flex;flex-direction: column;">
+                        <div style=" display: flex;flex-direction: column; width: 300px;">
                             <span><span class="subItem">- Destino: </span> ${suitcase.addresTo}</span>
-                            <span><span class="subItem">- Actividades:</span></span>
+                            <span>
+                                <span class="subItem">- Categorias:</span>
+                                <span class="grid-container">
+                                    <g:each in="${categories}">
+                                        <div class="grid-item"> ~ <g:message code="suitcase.category.${it}"/></div>
+                                    </g:each>
+                                </span>
+                            </span>
                             <span><span class="subItem">- Desde:  </span>${suitcase.fromDate}</span>
                             <span><span class="subItem">- Hasta: </span> ${suitcase.toDate}</span>
                         </div>
