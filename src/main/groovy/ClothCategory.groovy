@@ -1,4 +1,4 @@
-enum Category {
+enum ClothCategory {
     SPORTS,
     RUNNING,
     TENNIS,

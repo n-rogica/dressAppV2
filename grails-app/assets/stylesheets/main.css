@@ -600,3 +600,16 @@ img.grails-logo {
     border: 3px solid #9bcbef;
     margin-top: 5px;
 }
+
+
+h1{
+    font-family: "Verdana", Times, Sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+h2{
+    font-family: "Verdana", Times, Sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+}

@@ -17,10 +17,10 @@ class Suitcase extends ClothesSuggester{
     Suitcase(String addresTo, String fromDate, String toDate,
        Wardrobe wardrobe) {
       this.addresTo = addresTo
-      this.fromDate = new Date().parse("dd/MM/yyyy", fromDate)
-      this.toDate = new Date().parse("dd/MM/yyyy", toDate)
+      this.fromDate = new Date().parse("yyyy-MM-dd", fromDate)
+      this.toDate = new Date().parse("yyyy-MM-dd", toDate)
       this.wardrobe = wardrobe
-      this.clothes = []
+      this.clothes = wardrobe.clothes
       this.outfits =  []
       this.active = true //revisar
     }

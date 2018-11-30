@@ -13,11 +13,22 @@ class SuitcaseController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond suitcaseService.list(params), model:[suitcaseCount: suitcaseService.count()]
+        List<String> categories = ["SPORTS", "RUNNING", "TENNIS", "FOOTBALL", "HOME", "EVERYDAY", "NIGHT_OUT", "WORK",
+                                   "ELEGANT_SPORT", "VERY_ELEGANT", "WATER", "BEACH", "MOUNTAIN", "SNOW", "RAIN"]
+        respond suitcaseService.list(params), model:[categories: categories]
     }
 
     def suggestion(){
-        respond suitcaseService.list(params), model:[suitcaseCount: suitcaseService.count()]
+        String whereTo = params.get("where")
+        String fromDate = params.get("trip-start")
+        String toDate = params.get("trip-end")
+        String amount = params.get("quantity")
+        List<String> categories = params.get("category")
+        Wardrobe wardrobe = dressapp.users.User.findByUsername(getPrincipal().username).getWardrobe()
+
+        Suitcase suitcase = new Suitcase(whereTo,fromDate, toDate, wardrobe)
+
+        respond suitcaseService.list(params), model:[suitcase: suitcase]
     }
 
     def show(Long id) {
@@ -78,11 +89,24 @@ class SuitcaseController {
 
     def showImage() {
         File file = new File('src/main/webapp/maleta.jpg')
+        showImg(file)
+
+    }
+
+    def showImage2() {
+        File file = new File('src/main/webapp/maleta2.png')
+        showImg(file)
+    }
+
+    def showImg(File fileImage){
         response.setHeader('Cache-Control', 'no-cache')
         response.contentType = '/image/jpeg' /*adaptar al tipo necesario*/
-        response.outputStream << file.bytes
+        response.outputStream << fileImage.bytes
         response.outputStream.flush()
     }
+
+
+
 
     def delete(Long id) {
         if (id == null) {
