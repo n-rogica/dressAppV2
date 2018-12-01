@@ -46,6 +46,7 @@ dressAppV2.iml
 *.iml
 *.xml
 
+out/*
 .gradle/
 build/tmp/war/
 >>>>>>> 52071c06f1ad9bd2ac5fcf011dd424b6cfbc2c59
