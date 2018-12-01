@@ -1,43 +1,93 @@
 package dressapp.users
 
-import groovy.transform.EqualsAndHashCode
-
-import dressapp.containers.Wardrobe
 import dressapp.calendar.Event
+import dressapp.containers.Wardrobe
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+import grails.compiler.GrailsCompileStatic
 
-@EqualsAndHashCode
-class User {
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
+class User implements Serializable {
 
-    String userName
+    private static final long serialVersionUID = 1
+
+    String username
     String password
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
+
+
     static hasOne = [userInfo: UserInfo, wardrobe: Wardrobe]
     static hasMany = [friends: User, events: Event]
 
+    Set<Role> getAuthorities() {
+        (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
+    }
 
 
     static constraints = {
-      userName blank: false, unique: true
-      password size: 5..15, blank: false, password: true
+      username nullable: false, blank: false, unique: true
+      password nullable: false, blank: false, password: true
       friends nullable: true
     }
 
-    User(userName, password) {
+    User(username, password) {
       /* este seria el constructor que se tiene que llamar al crear
       un usuario, en la pantalla de creacion de usuario aparte de pedir
       usuario y password deberia pedir los campos de userinfo y
       body description*/
-      this.userName = userName
+      this.username = username
       this.password = password
       this.userInfo = new UserInfo(this)
       this.wardrobe = new Wardrobe(this)
     }
 
-    def addFriend() {
-        return "add friend"
+    def addFriend(User otherUser) {
+        this.addToFriends(otherUser)
+        if (!otherUser.isFriend(this)) {
+          otherUser.addToFriends(this)
+        }
     }
 
-    def acceptFriend() {
-      return "acceptFriend"
+    def removeFriend(User otherUser) {
+      if (this.friends != null) {
+        this.removeFromFriends(otherUser)
+      }
+
+      if (otherUser.friends != null) {
+        otherUser.removeFromFriends(this)
+      }
+    }
+
+    boolean isFriend(User otherUser) {
+      if (this.friends == null) {
+        return false
+      }
+      return this.friends.contains(otherUser)
+    }
+
+    void makeWardrobePrivate() {
+      this.wardrobe.visibleToFriends = false
+    }
+
+    void makeWardrobePublic() {
+      this.wardrobe.visibleToFriends = true
+    }
+
+    boolean isWardrobePublic() {
+      return this.wardrobe.visibleToFriends
+    }
+
+    int friendsCount() {
+      return this.friends?.size() ?: 0
+    }
+
+    static mapping = {
+        password column: '`password`'
     }
 
   }

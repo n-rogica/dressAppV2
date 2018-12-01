@@ -31,8 +31,21 @@
 
 # "temporary" build files
 /target
+<<<<<<< HEAD
 
 .gradle/
 .idea/
 build/tmp/war/
 dressAppV2.iml
+=======
+.DS_Store
+.idea
+.gradle
+/complete/build
+/build
+*.iml
+*.xml
+
+.gradle/
+build/tmp/war/
+>>>>>>> 52071c06f1ad9bd2ac5fcf011dd424b6cfbc2c59

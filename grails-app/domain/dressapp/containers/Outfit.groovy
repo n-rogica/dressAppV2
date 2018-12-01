@@ -16,8 +16,21 @@ class Outfit extends ClothesManager{
       outfitStatus enumType: 'string'
     }
 
+    Outfit(String description, Wardrobe wardrobe) {
+      this.description = description
+      this.usesCount = 0
+      this.clothes = []
+      wardrobe.outfits.add(this)
+      this.wardrobe = wardrobe
+      this.outfitStatus = OutfitStatus.AVAILABLE
+    }
+
     def use() {
       this.usesCount += 1
+    }
+
+    def clothesCount() {
+      return this.clothes.size()
     }
 
     def reject(){
@@ -25,8 +38,7 @@ class Outfit extends ClothesManager{
     }
 
     def addClothes(Clothes clothesToAdd) {
-      this.addToClothes(clothesToAdd) //revisar
-      return "agregando ropa"
+      this.clothes.add(clothesToAdd)
     }
     def deleteClothes(Clothes clothesToDelete) {
       return "borrando ropa"

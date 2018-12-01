@@ -16,4 +16,5 @@ enum ColdResistance {
   ColdResistance(int resistance) {
     this.resistance = resistance
   }
+
 }

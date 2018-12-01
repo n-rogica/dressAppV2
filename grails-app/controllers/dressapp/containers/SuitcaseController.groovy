@@ -1,8 +1,10 @@
 package dressapp.containers
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+@Secured("ROLE_ADMIN")
 class SuitcaseController {
 
     SuitcaseService suitcaseService
@@ -11,7 +13,26 @@ class SuitcaseController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond suitcaseService.list(params), model:[suitcaseCount: suitcaseService.count()]
+        List<String> categories = ["SPORTS", "RUNNING", "TENNIS", "FOOTBALL", "HOME", "EVERYDAY", "NIGHT_OUT", "WORK",
+                                   "ELEGANT_SPORT", "VERY_ELEGANT", "WATER", "BEACH", "MOUNTAIN", "SNOW", "RAIN"]
+        respond suitcaseService.list(params), model:[categories: categories]
+    }
+
+    def suggestion(){
+        String categoriesString = ""
+        String whereTo = params.get("where")
+        String fromDate = params.get("trip-start")
+        String toDate = params.get("trip-end")
+        String amount = params.get("quantity")
+        List<String> categories = params.get("category")
+        if(categories){
+            categoriesString = categories.join(",")
+        }
+        Wardrobe wardrobe = dressapp.users.User.findByUsername(getPrincipal().username).getWardrobe()
+
+        Suitcase suitcase = new Suitcase(whereTo,fromDate, toDate, wardrobe)
+
+        respond suitcaseService.list(params), model:[suitcase: suitcase, amount: amount, categories: categories]
     }
 
     def show(Long id) {
@@ -69,6 +90,27 @@ class SuitcaseController {
             '*'{ respond suitcase, [status: OK] }
         }
     }
+
+    def showImage() {
+        File file = new File('src/main/webapp/maleta.jpg')
+        showImg(file)
+
+    }
+
+    def showImage2() {
+        File file = new File('src/main/webapp/maleta2.png')
+        showImg(file)
+    }
+
+    def showImg(File fileImage){
+        response.setHeader('Cache-Control', 'no-cache')
+        response.contentType = '/image/jpeg' /*adaptar al tipo necesario*/
+        response.outputStream << fileImage.bytes
+        response.outputStream.flush()
+    }
+
+
+
 
     def delete(Long id) {
         if (id == null) {

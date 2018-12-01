@@ -2,7 +2,7 @@ package dressapp.containers
 
 import dressapp.clothes.Clothes
 
-class Suitcase {
+class Suitcase extends ClothesSuggester{
 
     String addresTo
     String fromDate
@@ -12,6 +12,17 @@ class Suitcase {
     static belongsTo = [wardrobe: Wardrobe]
 
     static constraints = {
+    }
+
+    Suitcase(String addresTo, String fromDate, String toDate,
+       Wardrobe wardrobe) {
+      this.addresTo = addresTo
+      this.fromDate = new Date().parse("yyyy-MM-dd", fromDate)
+      this.toDate = new Date().parse("yyyy-MM-dd", toDate)
+      this.wardrobe = wardrobe
+      this.clothes = wardrobe.clothes
+      this.outfits =  []
+      this.active = true //revisar
     }
 
     def addClothes(Clothes clothesToAdd) {

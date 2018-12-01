@@ -1,8 +1,0 @@
-dressapp.calendar.$EventServiceImplementation
-dressapp.clothes.$ClothesServiceImplementation
-dressapp.containers.$OutfitServiceImplementation
-dressapp.containers.$SuitcaseServiceImplementation
-dressapp.containers.$WardrobeServiceImplementation
-dressapp.users.$BodyDescriptionServiceImplementation
-dressapp.users.$UserInfoServiceImplementation
-dressapp.users.$UserServiceImplementation

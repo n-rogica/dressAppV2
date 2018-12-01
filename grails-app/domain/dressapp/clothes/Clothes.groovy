@@ -2,6 +2,8 @@ package dressapp.clothes
 
 import dressapp.users.User
 import dressapp.containers.*
+import org.apache.commons.lang.StringUtils
+import src.main.groovy.*
 
 class Clothes {
 
@@ -11,10 +13,11 @@ class Clothes {
     String fabric
     ColdResistance coldResistance
     Formality formality
+    List<ClothCategory> clothCategories
     String description
     String brand
     String size
-    String picture
+    byte[] picture
     Status status
     boolean visibleToFriends
     int usesCount
@@ -35,12 +38,14 @@ class Clothes {
       coldResistance enumType: 'string'
       formality enumType: 'string'
       status enumType: 'string', defaultValue: "'AVAILABLE'" //revisar
+      picture (type: 'image')
     }
 
     /*este es un constructor para poder hacer pruebas y hardcodear informacion
     en el archivo boostrap para que haya algo cuando inicia la aplicacion en la base de datos    */
     Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
-      description, size, picture, owner, wardrobe) {
+      description, size, pictureBytes, owner, wardrobe, brand, categories) {
+        //en picture deberia venir o la tira de bytes, o el path a la ruta
         this.name = name
         this.bodyPart = bodyPart
         this.mainColour = mainColour
@@ -49,12 +54,27 @@ class Clothes {
         this.formality = formality
         this.description = description
         this.size = size
-        this.picture = picture
+
+        this.brand = brand
+        this.clothCategories = new ArrayList<>()
+        if(!StringUtils.isEmpty(categories)) {
+            for (String cat : categories.split("/")) {
+                this.clothCategories.add(ClothCategory.valueOf(cat))
+            }
+        }
+
+        //lo que viene en picture es la tira de bytes
+        this.picture = pictureBytes
+
+        /*si lo que viene en picture es la ruta
+        this.picture = new File(picture).bytes
+        */
+
         this.owner = owner
         this.wardrobe = wardrobe
-        this.visibleToFriends = true /*esto hay que forzarlo porque no
-         toma el valor por defecto en el mapping, el jueves lo consulto*/
-         this.status = Status.AVAILABLE // idem anterior
-      }
+        this.wardrobe.clothes.add(this)
+        this.visibleToFriends = true
+        this.status = Status.AVAILABLE
+    }
 
 }
