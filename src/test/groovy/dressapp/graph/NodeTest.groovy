@@ -18,7 +18,7 @@ class NodeTest extends Specification {
 
     def "AddingAnEdgeToTheNode"() {
         given:
-            Edge edge1 = new Edge(new Node("A"), new Node("B"), 100)
+            Edge edge1 = new Edge(new Node("A"), new Node("B"), 100).save(failOnError: true)
             this.node.addEdge(edge1)
         expect:
             this.node.edges.size() == 1

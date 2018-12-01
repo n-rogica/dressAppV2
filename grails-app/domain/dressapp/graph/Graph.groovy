@@ -6,15 +6,17 @@ import dressapp.containers.Wardrobe
 class Graph {
 
     static belongsTo = [wardrobe: Wardrobe]
-    static hasMany = [nodes: Node]
+  //  static hasMany = [nodes: Node]
 
     private HashSet<Edge> edges
     private Map<Node, Set<Edge>> adjList
+    private HashSet<Node> nodes
 
     static constraints = {
     }
 
-    Graph() {
+    Graph(wardrobe) {
+        this.wardrobe = wardrobe
         nodes = new HashSet<>()
         edges = new HashSet<>()
         adjList = new HashMap<>()

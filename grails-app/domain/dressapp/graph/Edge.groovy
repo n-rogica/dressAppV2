@@ -4,7 +4,9 @@ class Edge {
 
     private static final int DEFAULT_WEIGHT = 100
 
-    static hasOne = [startNode: Node, endNode: Node]
+    //static hasOne = [startNode: Node, endNode: Node]
+    Node startNode
+    Node endNode
     double probability
 
     Edge(Node startNode, Node endNode) {

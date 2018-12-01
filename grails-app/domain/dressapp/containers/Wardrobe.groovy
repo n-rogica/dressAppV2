@@ -14,13 +14,14 @@ class Wardrobe extends ClothesSuggester {
     static belongsTo = [user: User]
     static hasMany = [suitcases: Suitcase]
     static hasOne = [graph: Graph]
+    //Graph graph
 
     static constraints = {
     }
 
     Wardrobe(User user) {
       this.user = user
-      this.graph = new Graph()
+      this.graph = new Graph(this)
       this.clothes = []
       this.outfits = []
       this.visibleToFriends = true //mover esto al static mapping

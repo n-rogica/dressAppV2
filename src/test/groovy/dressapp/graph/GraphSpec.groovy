@@ -17,7 +17,7 @@ class GraphSpec extends Specification implements DomainUnitTest<Graph> {
 
     void setup() {
         testUser1 = new User('pepe','pass1').save()
-        graph = new Graph()
+        graph = new Graph(testUser1.wardrobe)
     }
 
     def "graphCreatedWithRoot"(){
@@ -38,7 +38,7 @@ class GraphSpec extends Specification implements DomainUnitTest<Graph> {
 
     def "addAShirtTest"(){
         given:
-            //setee los parametros que faltaban 
+            //setee los parametros que faltaban
             Clothes shirt1 = new Clothes('remera', BodyPart.CHEST,'red','algodon', ColdResistance.NOTHING, Formality.INFORMAL,
                 'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
             this.graph.addCloth(shirt1)
