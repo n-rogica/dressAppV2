@@ -3,6 +3,7 @@ package dressapp
 import dressapp.users.*
 import dressapp.clothes.*
 import dressapp.containers.*
+import dressapp.weather.*
 
 import java.util.logging.Logger
 
@@ -18,6 +19,21 @@ class BootStrap {
 
     /*  Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
         description, size, picture, owner, wardrobe) */
+       Weather weather1 = new Weather(Date.parse('dd-MM-yyyy', "01-12-2018"), 30, WeatherDescription.SUNNY).save(failOnError: true)
+       Weather weather2 = new Weather(Date.parse('dd-MM-yyyy', "24-12-2018"), 25, WeatherDescription.RAINING).save(failOnError: true)
+       Weather weather3 = new Weather(Date.parse('dd-MM-yyyy', "01-12-2018"), -10, WeatherDescription.SUNNY).save(failOnError: true)
+       Weather weather4 = new Weather(Date.parse('dd-MM-yyyy', "02-12-2018"), -2, WeatherDescription.SUNNY).save(failOnError: true)
+
+       City city1 = new City("USA","Florida","Miami")
+       City city2 = new City("Rusia","Leningrado","San Petersburgo")
+
+       city1.addWeather(weather1);
+       city1.addWeather(weather2);
+       city2.addWeather(weather3);
+       city2.addWeather(weather4);
+
+       city1.save(failOnError: true)
+       city2.save(failOnError: true)
 
        User user = new User('admin', 'admin').save(failOnError: true)
        User admin = new User('agus', 'admin').save(failOnError: true)

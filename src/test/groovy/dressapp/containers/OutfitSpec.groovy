@@ -20,7 +20,7 @@ class OutfitSpec extends Specification implements DomainUnitTest<Outfit> {
       testClothes1 = new Clothes('remera', BodyPart.SHOULDER, 'red','algodon',
         ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',
         'ruta',testUser1, testUser1.wardrobe).save(failOnError: true)
-      testOutfit1 = new Outfit("", testUser1.wardrobe)
+      testOutfit1 = new Outfit("", testUser1.wardrobe).save()
     }
 
     def cleanup() {
@@ -57,14 +57,14 @@ class OutfitSpec extends Specification implements DomainUnitTest<Outfit> {
       given:
         testOutfit1.addClothes(testClothes1)
       expect:
-        testUser1.clothesCount() == 1 && testClothes1.owner == testUser1
+        testUser1.wardrobe.clothesCount() == 1 && testClothes1.owner == testUser1
     }
 
     def "test se aumenta la cantidad de usos del outfit"() {
       given:
         testOutfit1.use()
       expect:
-        testUser1.usesCount == 1
+        testOutfit1.usesCount == 1
     }
 
 
