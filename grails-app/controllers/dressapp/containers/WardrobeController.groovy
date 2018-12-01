@@ -19,6 +19,10 @@ class WardrobeController {
         respond wardrobeService.list(params), model:[wardrobe: loggedUser.getWardrobe()]
     }
 
+    def deleteAll(){
+        respond wardrobeService.list(params)
+    }
+
     def show(Long id) {
         respond wardrobeService.get(id)
     }

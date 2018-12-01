@@ -10,6 +10,10 @@
         margin: 5px;
     }
 
+    .cloth-box:hover{
+        background-color: #d3f1ff;
+    }
+
     .cloth-desc{
         font-weight: bold;
         font-size: 18px;
@@ -20,7 +24,7 @@
 
 </style>
 
-<div class="cloth-box">
+<div id="${cloth.name+cloth.id}" draggable="true" ondragstart="drag(event)" class="cloth-box">
     <g:if test="${cloth != null}">
         <g:render template="/shared/clothImg" model="[cloth: cloth]"/>
         <div>
@@ -31,5 +35,11 @@
         </div>
     </g:if>
 </div>
+
+<script>
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+</script>
 
 </html>

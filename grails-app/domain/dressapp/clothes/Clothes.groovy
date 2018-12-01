@@ -2,6 +2,7 @@ package dressapp.clothes
 
 import dressapp.users.User
 import dressapp.containers.*
+import org.apache.commons.lang.StringUtils
 import src.main.groovy.*
 
 class Clothes {
@@ -12,6 +13,7 @@ class Clothes {
     String fabric
     ColdResistance coldResistance
     Formality formality
+    List<ClothCategory> clothCategories
     String description
     String brand
     String size
@@ -42,7 +44,7 @@ class Clothes {
     /*este es un constructor para poder hacer pruebas y hardcodear informacion
     en el archivo boostrap para que haya algo cuando inicia la aplicacion en la base de datos    */
     Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
-      description, size, pictureBytes, owner, wardrobe) {
+      description, size, pictureBytes, owner, wardrobe, brand, categories) {
         //en picture deberia venir o la tira de bytes, o el path a la ruta
         this.name = name
         this.bodyPart = bodyPart
@@ -52,7 +54,14 @@ class Clothes {
         this.formality = formality
         this.description = description
         this.size = size
-        this.status = Status.AVAILABLE
+
+        this.brand = brand
+        this.clothCategories = new ArrayList<>()
+        if(!StringUtils.isEmpty(categories)) {
+            for (String cat : categories.split("/")) {
+                this.clothCategories.add(ClothCategory.valueOf(cat))
+            }
+        }
 
         //lo que viene en picture es la tira de bytes
         this.picture = pictureBytes
@@ -67,9 +76,5 @@ class Clothes {
         this.visibleToFriends = true
         this.status = Status.AVAILABLE
     }
-
-
-
-
 
 }

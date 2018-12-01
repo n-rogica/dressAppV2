@@ -3,6 +3,8 @@ enum BodyPart {
   NECK,
   SHOULDER,
   CHEST,
+  CHEST2,
+  CHEST3,
   HANDS,
   LEGS,
   FEETS
