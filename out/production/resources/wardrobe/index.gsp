@@ -2,20 +2,31 @@
 <html>
     <head>
         <meta name="layout" content="main" />
+
+        <style type="text/css">
+            .dropArea {
+                width: 500px;
+                height: 300px;
+                padding: 10px;
+                border: 1px solid #aaaaaa;
+                overflow:auto;
+            }
+        </style>
         <g:set var="entityName" value="${message(code: 'wardrobe.label', default: 'Wardrobe')}" />
         %{--<title><g:message code="default.list.label" args="[entityName]" /></title>--}%
+
+        <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
     </head>
-
-    <style>
-        .cloth-listt{
-            height:500px;
-            width:430px;
-            border:1px solid #ccc;
-            font:16px/26px Georgia, Garamond, Serif;
-            overflow:auto;
-        }
-
-    </style>
 
     <body>
         <div class="nav" role="navigation">
@@ -32,12 +43,16 @@
             %{--</div>--}%
             </section>
             <section class="row">
+                <h1>ARMA TU OUTFIT</h1>
+                <div class="dropArea" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <br>
                 <p><g:message code="default.wardrobe.outfits.label"/></p>
                 <div style="display: inline-flex; margin:10px;width:100%">
                 <input type="text" name="searchWardrobe">
                     <button>Buscar</button>
                 </div>
                 <g:render template="/shared/outfitSearchList" model="[outfitlist: wardrobe.outfits]"/>
+                <button class="suitcase-button" action="deleteAll">Borrar</button>
             </section>
             </div>
         </section>

@@ -4,7 +4,7 @@
 <style>
     .outfit-box {
         border: 2px solid black;
-        width: 375px;
+        width: 415px;
         margin: 5px;
     }
 
@@ -46,10 +46,10 @@
 
 <div class="outfit-box" style="overflow-y: hidden;overflow-x: scroll">
     <g:if test="${outfit != null}">
-        <div><p class="outfit-desc ">hola</p></div>
+        <div><p class="outfit-desc ">${outfit.description}</p></div>
         <div class="show-horizontal">
         <g:each in="${outfit.clothes}">
-            <g:render template="/shared/clothImg" model="[image:it]"/>
+            <g:render template="/shared/clothImg" model="[cloth:it]"/>
         </g:each>
         </div>
         <div style="display: inline-flex">

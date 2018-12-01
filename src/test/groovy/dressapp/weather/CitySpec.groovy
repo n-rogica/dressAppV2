@@ -70,7 +70,7 @@ class CitySpec extends Specification implements DomainUnitTest<City> {
 
     }
 
-    void "test se pide el clima para una fecha "() {
+    void "test se pide el clima para una fecha2 "() {
         given:
             testCity1.addWeather(testWeather1)
             testCity1.addWeather(testWeather2)

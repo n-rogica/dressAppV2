@@ -1,7 +1,7 @@
 import dressapp.clothes.Clothes
 
 abstract class ClothesManager {
-  /*esta lista y la de outfits en ClothesSuggester pueden o no estar,
+  /*esta lista y la de outfits en  pueden o no estar,
   en algunos casos por ahi aceleran el proceso de busqueda, por ejemplo
   para los outfits con la lista uno sabe rapidamente cuales son las prendas
   que lo componene, en cambio usando directamente la relacion hay que

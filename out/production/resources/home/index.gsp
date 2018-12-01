@@ -16,7 +16,9 @@
                 <h2><g:message code="user.welcome.label" args="[loggedUser.username]"/></h2>
 
                 <h3><g:message code="user.welcome.day.suggestion"/></h3>
-                <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+                <g:if test="${outfit != null}">
+                    <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+                </g:if>
                 <button type="button">Otra</button>
             </div>
 
@@ -31,7 +33,7 @@
                     <ul style="display: inline-grid;">
                         <li class="home-buttons"><g:link controller="wardrobe" action="index">Guardarropa</g:link></li>
                         <li class="home-buttons"><g:link controller="user" action="index">Users</g:link></li>
-                        <li class="home-buttons"><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
+                        <li class="home-buttons"><g:link controller="suitcase" action="index">Suitcase</g:link></li>
                         <li class="home-buttons"><g:link controller="clothes" action="index">clothes</g:link></li>
                     </ul>
                 </div>

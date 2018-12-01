@@ -19,7 +19,10 @@
         font-size: 18px;
     }
     .cloth-details{
-        font-size: 15px;
+        font-size: 13px;
+    }
+    .cloth-details-title{
+        font-weight: bold;
     }
 
 </style>
@@ -30,9 +33,11 @@
         <div>
             <p class="cloth-desc">${cloth.name}</p>
             <p class="cloth-desc">${cloth.mainColour}</p>
-            <p class="cloth-details">Formalidad:${cloth.formality}</p>
-            <p class="cloth-details">Resistencia:${cloth.coldResistance}</p>
+            <p class="cloth-details "><span class="cloth-details-title">Formalidad: </span><g:message code="cloth.formality.${cloth.formality}"/></p>
+            <p class="cloth-details"><span class="cloth-details-title">Resistencia: </span><g:message code="cloth.coldResistance.${cloth.coldResistance}"/></p>
+            <p class="cloth-details"><span class="cloth-details-title">Usos: </span>${cloth.usesCount}</p>
         </div>
+        <div></div>
     </g:if>
 </div>
 

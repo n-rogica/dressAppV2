@@ -14,7 +14,7 @@
 
     <div class="cloth-list">
         <g:each var="i" in="${ (0..< outfit.clothes.size()) }">
-            <li>${i} <g:render template="/shared/clothDescriptionBox" model="[cloth: outfit.clothes.getAt(i)]"/></li>
+            <g:render template="/shared/clothDescriptionBox" model="[cloth: outfit.clothes.getAt(i)]"/>
         </g:each>
     </div>
 

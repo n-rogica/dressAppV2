@@ -19,7 +19,7 @@ class ClothesSpec extends Specification implements DomainUnitTest<Clothes> {
       testUser2 = new User('paco','pass1').save()
       testClothes1 = new Clothes('remera', BodyPart.SHOULDER, 'red','algodon',
         ColdResistance.NOTHING, Formality.INFORMAL, 'asd','M',
-        'ruta',testUser1, testUser1.wardrobe).save(failOnError: true)
+        'ruta',testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
     }
 
     def cleanup() {

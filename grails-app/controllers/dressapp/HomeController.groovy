@@ -17,6 +17,7 @@ class HomeController {
         return
       }
         //Aca abajo deberia llamar a la sugerencia
+        loggedUser.wardrobe.generateSuggestion()
       def outfit = loggedUser.wardrobe.outfits[0]
 
 
