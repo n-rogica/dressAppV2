@@ -29,6 +29,10 @@ class Outfit extends ClothesManager{
       this.usesCount += 1
     }
 
+    def clothesCount() {
+      return this.clothes.size()
+    }
+
     def reject(){
       println "reject"
     }
