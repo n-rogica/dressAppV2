@@ -20,6 +20,8 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
+    boolean dressed
+
 
     static hasOne = [userInfo: UserInfo, wardrobe: Wardrobe]
     static hasMany = [friends: User, events: Event]
@@ -44,6 +46,11 @@ class User implements Serializable {
       this.password = password
       this.userInfo = new UserInfo(this)
       this.wardrobe = new Wardrobe(this)
+        this.dressed = false
+    }
+
+    def setDressed(boolean dressed){
+        this.dressed = dressed
     }
 
     def addFriend(User otherUser) {

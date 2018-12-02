@@ -5,8 +5,8 @@
     <style>
         .cloth-list{
             height:500px;
-            width:430px;
-            border:1px solid #ccc;
+            width:433px;
+            border:3px solid #9bcbef;
             font:16px/26px Georgia, Garamond, Serif;
             overflow:auto;
         }

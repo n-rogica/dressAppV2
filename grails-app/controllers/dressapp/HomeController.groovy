@@ -9,27 +9,41 @@ import org.springframework.core.io.ByteArrayResource
 @Secured(["ROLE_ADMIN"])
 class HomeController {
 
+    def loggedUser
+    def outfit
+
+    List<String> categories = ["SPORTS", "RUNNING", "TENNIS", "FOOTBALL", "HOME", "EVERYDAY", "NIGHT_OUT", "WORK",
+                               "ELEGANT_SPORT", "VERY_ELEGANT", "WATER", "BEACH", "MOUNTAIN", "SNOW", "RAIN"]
+
     def index() {
       String loggedUserName = getPrincipal().username
-      def loggedUser = User.findByUsername(loggedUserName)
+      loggedUser = User.findByUsername(loggedUserName)
       if (loggedUser == null) {
         render "no encontro al usuario"
         return
       }
         //Aca abajo deberia llamar a la sugerencia
-        loggedUser.wardrobe.generateSuggestion()
-      def outfit = loggedUser.wardrobe.outfits[0]
+        if(!loggedUser.dressed) {
+            outfit = loggedUser.wardrobe.generateSuggestion()
+        }
 
-
-      render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit])
+      render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
     }
 
     /*este metodo muestra fotos cuando lo llamas*/
-    def showImage() {
-    File file = new File('src/main/webapp/image.jpeg') /*si le saco mas cosas al path no lo encuentra*/
+
+    def showWardrobeImg(){
+        showImage("wardrobeButton.jpg")
+    }
+    def showTripImg(){
+        showImage("viajeButton.jpg")
+    }
+
+    def showImage(String img) {
+    File file = new File('src/main/webapp/'+img) /*si le saco mas cosas al path no lo encuentra*/
     /*response es una variable propia del controller que provee groovy, hay distintos tipos, model, message, flash, cada una tiene una función diferente*/
     response.setHeader('Cache-Control', 'no-cache') /*esto creo que se puede modificar, vi distintos ejemplos con distintas cosas en el header*/
-    response.contentType = '/image/jpeg' /*adaptar al tipo necesario*/
+    response.contentType = '/image/jpg' /*adaptar al tipo necesario*/
     response.outputStream << file.bytes
     response.outputStream.flush()
 
@@ -102,22 +116,41 @@ class HomeController {
         }
       }
 
-      /* en el gsp esto se implementa de la siguiente manera
-      suponiendo que la logica del paso esta definida en el metodo index la vista
-      ya tiene disponible en una variable 'images' una lista de todas las fotos, (caso contrario
-      habría que definir un link al action que trae todas las imagenes previamente)
+    def another() {
 
-      una vez que tengo toda la lista de fotos con el metodo g:each ciclo por todos los elementos
-      de la lista 'images'
-      <g:each in="${images}" var="img">
-      <img src='${createLink(controller: "home", action: "displayImage", params:[img: img.path])}' />
-      </g:each>
+        outfit = loggedUser.wardrobe.generateSuggestion()
+        render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
+    }
 
-      params es un map de tipo clave, valor que se usa para mandarle información al controlador
-      en este caso el map params tiene un solo elemento con clave 'img' y valor img.path
+    def useOutfit() {
+        loggedUser.setDressed(true)
+//        loggedUser.save()
+//        outfit.save()
+        render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
+    }
 
-      img.path me da la ruta completa de la foto, si usara img.name solo me daria el nombre del archivo
-      esto puede ser util si llegado el momento hay que levantar distintas fotos de distintos lugares
-      y no se quiere comprometer el metodo a una sola implementacion
-      */
+    def undress() {
+        loggedUser.setDressed(false)
+//        loggedUser.save()
+        render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
+    }
+
+    /* en el gsp esto se implementa de la siguiente manera
+    suponiendo que la logica del paso esta definida en el metodo index la vista
+    ya tiene disponible en una variable 'images' una lista de todas las fotos, (caso contrario
+    habría que definir un link al action que trae todas las imagenes previamente)
+
+    una vez que tengo toda la lista de fotos con el metodo g:each ciclo por todos los elementos
+    de la lista 'images'
+    <g:each in="${images}" var="img">
+    <img src='${createLink(controller: "home", action: "displayImage", params:[img: img.path])}' />
+    </g:each>
+
+    params es un map de tipo clave, valor que se usa para mandarle información al controlador
+    en este caso el map params tiene un solo elemento con clave 'img' y valor img.path
+
+    img.path me da la ruta completa de la foto, si usara img.name solo me daria el nombre del archivo
+    esto puede ser util si llegado el momento hay que levantar distintas fotos de distintos lugares
+    y no se quiere comprometer el metodo a una sola implementacion
+    */
 }

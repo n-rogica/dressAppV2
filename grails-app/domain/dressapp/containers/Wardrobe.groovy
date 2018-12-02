@@ -56,41 +56,41 @@ class Wardrobe extends ClothesSuggester {
         Outfit outfit = new Outfit("suggestion", this)
         Weather weather = new Weather(new Date(), 5, WeatherDescription.SNOW)
 
-        List<Node> nodes = this.graph.getSuggestion(3)
-        nodes.stream().map{node -> node.cloth}.forEach{cloth -> outfit.addClothes(cloth)}
+//        List<Node> nodes = this.graph.getSuggestion(3)
+//        nodes.stream().map{node -> node.cloth}.forEach{cloth -> outfit.addClothes(cloth)}
 
-//        List<Clothes> shoes = getClothesFor("FEETS")
-//        List<Clothes> pants = getClothesFor("LEGS")
-//        List<Clothes> shirts = getClothesFor("CHEST")
-//        List<Clothes> hoodies = getClothesFor("CHEST2")
-//        List<Clothes> coats = getClothesFor("CHEST3")
-//        List<Clothes> hands = getClothesFor("HANDS")
-//        List<Clothes> neck = getClothesFor("NECK")
-//        List<Clothes> head = getClothesFor("HEAD")
-//
-//
-//        if(weather.temp <= 10){
-//            this.addRandomCloth(shirts,outfit)
-//            this.addRandomCloth(hoodies,outfit)
-//            this.addRandomCloth(coats,outfit)
-//            this.addRandomCloth(pants,outfit)
-//            this.addRandomCloth(shoes,outfit)
-//            if(WeatherDescription.SNOW.name() == "SNOW"){
-//                this.addRandomCloth(hands,outfit)
-//                this.addRandomCloth(neck,outfit)
-//                this.addRandomCloth(head,outfit)
-//            }
-//        }else if (weather.temp > 10 && weather.temp < 25){
-//            this.addRandomCloth(shirts,outfit)
-//            this.addRandomCloth(hoodies,outfit)
-//            this.addRandomCloth(pants,outfit)
-//            this.addRandomCloth(shoes,outfit)
-//        }else{
-//            this.addRandomCloth(shirts,outfit)
-//            this.addRandomCloth(hoodies,outfit)
-//            this.addRandomCloth(pants,outfit)
-//            this.addRandomCloth(shoes,outfit)
-//        }
+        List<Clothes> shoes = getClothesFor("FEETS")
+        List<Clothes> pants = getClothesFor("LEGS")
+        List<Clothes> shirts = getClothesFor("CHEST")
+        List<Clothes> hoodies = getClothesFor("CHEST2")
+        List<Clothes> coats = getClothesFor("CHEST3")
+        List<Clothes> hands = getClothesFor("HANDS")
+        List<Clothes> neck = getClothesFor("NECK")
+        List<Clothes> head = getClothesFor("HEAD")
+
+
+        if(weather.temp <= 10){
+            this.addRandomCloth(shirts,outfit)
+            this.addRandomCloth(hoodies,outfit)
+            this.addRandomCloth(coats,outfit)
+            this.addRandomCloth(pants,outfit)
+            this.addRandomCloth(shoes,outfit)
+            if(WeatherDescription.SNOW.name() == "SNOW"){
+                this.addRandomCloth(hands,outfit)
+                this.addRandomCloth(neck,outfit)
+                this.addRandomCloth(head,outfit)
+            }
+        }else if (weather.temp > 10 && weather.temp < 25){
+            this.addRandomCloth(shirts,outfit)
+            this.addRandomCloth(hoodies,outfit)
+            this.addRandomCloth(pants,outfit)
+            this.addRandomCloth(shoes,outfit)
+        }else{
+            this.addRandomCloth(shirts,outfit)
+            this.addRandomCloth(hoodies,outfit)
+            this.addRandomCloth(pants,outfit)
+            this.addRandomCloth(shoes,outfit)
+        }
 
 
 

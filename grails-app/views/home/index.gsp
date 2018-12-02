@@ -5,21 +5,89 @@
     <meta name="layout" content="main"/>
     <title>Dressapp Home</title>
     <link rel="stylesheet" href="${resource(file: 'home.css')}" type="text/css">
+
+    <style>
+        .homepage{
+            width: 1000px;
+            margin: 0 auto;
+        }
+    .container {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: #555;
+        color: white;
+        font-size: 20px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .container .btn:hover {
+        background-color: black;
+    }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+        }
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+
 </head>
 
 <body>
 
-<div id="content" role="main">
-    <section class="row">
+<div class="homepage" role="main">
         <div class="home-welcome">
             <div id="first">
                 <h2><g:message code="user.welcome.label" args="[loggedUser.username]"/></h2>
 
                 <h3><g:message code="user.welcome.day.suggestion"/></h3>
-                <g:if test="${outfit != null}">
-                    <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+
+                    <g:if test="${outfit != null}">
+                        <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+                    </g:if>
+
+
+
+                <g:if test="${!loggedUser.dressed}">
+                    <div class="grid-container options">
+                        <g:each in="${categories}">
+                            <div><input class="grid-item" type="checkbox" name="category" value="${it}"><g:message code="suitcase.category.${it}"/></div>
+                        </g:each>
+                    </div>
+                    <g:link controller="home" action="another"><button type="button">Otra</button></g:link>
+                    <g:link controller="home" action="useOutfit"><button type="button">Usar conjunto</button></g:link>
                 </g:if>
-                <button type="button">Otra</button>
+
+                <g:if test="${loggedUser.dressed}">
+                    <button type="button"><g:link controller="home" action="undress">Dejar de usar</g:link></button>
+                </g:if>
+
+
             </div>
 
             <div id="second">
@@ -31,17 +99,21 @@
 
                 <div>
                     <ul style="display: inline-grid;">
-                        <li class="home-buttons"><g:link controller="wardrobe" action="index">Guardarropa</g:link></li>
-                        <li class="home-buttons"><g:link controller="user" action="index">Users</g:link></li>
-                        <li class="home-buttons"><g:link controller="suitcase" action="index">Suitcase</g:link></li>
-                        <li class="home-buttons"><g:link controller="clothes" action="index">clothes</g:link></li>
+                        <div class="container">
+                            <img src="${createLink(controller: 'home', action: 'showWardrobeImg')}" alt="Guardarropa" style="width:100%">
+                        <g:link controller="wardrobe" action="index"><button class="btn">Guardarropa</button></g:link>
+                        </div>
+                        <div class="container">
+                            <img src="${createLink(controller: 'home', action: 'showTripImg')}" alt="Guardarropa" style="width:100%">
+                            <g:link controller="suitcase" action="index"><button class="btn">Viaje</button></g:link>
+                        </div>
                     </ul>
                 </div>
             </div>
 
         </div>
-    </section>
 </div>
 
 </body>
+
 </html>
