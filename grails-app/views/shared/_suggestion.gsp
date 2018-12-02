@@ -8,7 +8,9 @@
             width:433px;
             border:3px solid #9bcbef;
             font:16px/26px Georgia, Garamond, Serif;
+            background-color: #ffefe7;
             overflow:auto;
+            margin: 3px;
         }
     </style>
 

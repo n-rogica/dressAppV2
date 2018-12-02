@@ -24,7 +24,9 @@ class HomeController {
       }
         //Aca abajo deberia llamar a la sugerencia
         if(!loggedUser.dressed) {
+
             outfit = loggedUser.wardrobe.generateSuggestion()
+            outfit.save()
         }
 
       render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])

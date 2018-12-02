@@ -54,6 +54,32 @@
             font-size: 30px;
             text-align: center;
         }
+        .suggestion-area {
+            margin-top: 20px;
+            border-radius: 3px;
+        }
+        .suggestion-title {
+            width: 300px;
+            margin: 10px auto;
+            font-weight: bolder;
+            color: white;
+            font-size: 25px;
+        }
+        .button-cool {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #555;
+            color: white;
+            font-size: 20px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button-cool:hover {
+            background-color: black;
+        }
     </style>
 
 </head>
@@ -65,26 +91,39 @@
             <div id="first">
                 <h2><g:message code="user.welcome.label" args="[loggedUser.username]"/></h2>
 
-                <h3><g:message code="user.welcome.day.suggestion"/></h3>
-
-                    <g:if test="${outfit != null}">
-                        <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
-                    </g:if>
-
-
-
                 <g:if test="${!loggedUser.dressed}">
-                    <div class="grid-container options">
-                        <g:each in="${categories}">
-                            <div><input class="grid-item" type="checkbox" name="category" value="${it}"><g:message code="suitcase.category.${it}"/></div>
-                        </g:each>
+                    <div class="suggestion-area" style="background-color: #646364">
+                        <div class="suggestion-title "><g:message code="user.welcome.day.suggestion"/></div>
+
+                        <g:if test="${outfit != null}">
+                            <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+                        </g:if>
                     </div>
-                    <g:link controller="home" action="another"><button type="button">Otra</button></g:link>
-                    <g:link controller="home" action="useOutfit"><button type="button">Usar conjunto</button></g:link>
                 </g:if>
 
                 <g:if test="${loggedUser.dressed}">
-                    <button type="button"><g:link controller="home" action="undress">Dejar de usar</g:link></button>
+                    <div class="suggestion-area" style="background-color: #5c598c">
+                        <div class="suggestion-title "><g:message code="user.welcome.day.currentOutfit"/></div>
+
+                        <g:if test="${outfit != null}">
+                            <g:render template="/shared/suggestion" model="[outfit: outfit]"/>
+                        </g:if>
+                    </div>
+                </g:if>
+
+
+                <g:if test="${!loggedUser.dressed}">
+                    %{--<div class="grid-container options">--}%
+                        %{--<g:each in="${categories}">--}%
+                            %{--<div><input class="grid-item" type="checkbox" name="category" value="${it}"><g:message code="suitcase.category.${it}"/></div>--}%
+                        %{--</g:each>--}%
+                    %{--</div>--}%
+                    <g:link controller="home" action="another"><button class="button-cool" type="button">Otra sugerencia</button></g:link>
+                    <g:link controller="home" action="useOutfit"><button class="button-cool" type="button">Usar conjunto</button></g:link>
+                </g:if>
+
+                <g:if test="${loggedUser.dressed}">
+                    <g:link controller="home" action="undress"><button style="background-color: #5c598c" class="button-cool"  type="button">Dejar de usar</button></g:link>
                 </g:if>
 
 

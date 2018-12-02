@@ -8,6 +8,7 @@
         vertical-align: top;
         width: 400px;
         margin: 5px;
+        background-color: white;
     }
 
     .cloth-box:hover{
