@@ -13,15 +13,16 @@ class Wardrobe extends ClothesSuggester {
     //modo
     static belongsTo = [user: User]
     static hasMany = [suitcases: Suitcase]
-    static hasOne = [graph: Graph]
-    //Graph graph
+    //static hasOne = [graph: Graph]
+    Graph graph
 
     static constraints = {
     }
 
     Wardrobe(User user) {
       this.user = user
-      this.graph = new Graph(this)
+      //this.graph = new Graph(this).save(failOnError: true
+      this.graph = new Graph(this).save(failOnError: true)
       this.clothes = []
       this.outfits = []
       this.visibleToFriends = true //mover esto al static mapping
@@ -108,6 +109,12 @@ class Wardrobe extends ClothesSuggester {
 
             outfit.addClothes(clothes.get(result))
         }
+    }
+
+    def getClothesForId(int id) {
+      def res = this.clothes.find{it -> it.id == id}
+      println ("prenda que se busco " + res)
+      return res
     }
 
     Clothes generateClothSuggestion() {

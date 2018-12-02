@@ -8,16 +8,18 @@ class Edge {
     Node startNode
     Node endNode
     double weight
+    Graph graph
 
-    Edge(Node startNode, Node endNode) {
-        this(startNode, endNode, DEFAULT_WEIGHT)
+    Edge(Node startNode, Node endNode, Graph graph) {
+        this(startNode, endNode, DEFAULT_WEIGHT, graph)
     }
 
-    Edge(Node startNode, Node endNode, int weight) {
+    Edge(Node startNode, Node endNode, int weight, graph) {
         super()
         this.startNode = startNode
         this.endNode = endNode
         this.weight = weight
+        this.graph = graph
     }
 
     boolean equals(Object obj) {

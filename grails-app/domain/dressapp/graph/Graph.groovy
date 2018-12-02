@@ -5,12 +5,14 @@ import dressapp.containers.Wardrobe
 
 class Graph {
 
-    static belongsTo = [wardrobe: Wardrobe]
-//    static hasMany = [nodes: Node]
+  //  static belongsTo = [wardrobe: Wardrobe]
+    /* dejo esto por las dudas
+    static hasMany = [nodes: Node]*/
 
     private HashSet<Edge> edges
     private Map<Node, Set<Edge>> adjList
     private HashSet<Node> nodes
+    private Wardrobe wardrobe
 
     static constraints = {
     }
@@ -20,28 +22,32 @@ class Graph {
         nodes = new HashSet<>()
         edges = new HashSet<>()
         adjList = new HashMap<>()
-        this.addNode(new Node(0))
+        this.addNode(new Node(0, this).save(failOnError: true))
     }
 
     boolean addNode(int label) {
-        return nodes.add(new Node(label))
+        return nodes.add(new Node(label, this).save(failOnError: true))
     }
 
     boolean addNode(Node v) {
-        return nodes.add(v)
+      //  println("cant nodos " + nodes.size())
+        def res = nodes.add(v)
+      //  println("cant nodos despues del add " + nodes.size())
+      //  println ("valor de res: " + res)
+        return res
     }
 
     boolean addVertices(Collection<Node> nodes) {
         return this.nodes.addAll(nodes)
     }
-
+/*
     boolean removeNode(int label) {
-        return nodes.remove(new Node(label))
+        return nodes.remove(new Node(label, this))
     }
 
     boolean removeNode(Node v) {
         return nodes.remove(v)
-    }
+    }*/
 
     boolean addEdge(Edge e) {
         if (!edges.add(e)) return false
@@ -56,8 +62,8 @@ class Graph {
     }
 
     boolean addEdge(int nodeLabel1, int nodeLabel2) {
-        return addEdge(new Edge(new Node(nodeLabel1),
-                new Node(nodeLabel2)))
+        return addEdge(new Edge(new Node(nodeLabel1, this).save(failOnError: true),
+                new Node(nodeLabel2, this).save(failOnError: true), this).save(failOnError: true))
     }
 
     boolean removeEdge(Edge e) {
@@ -70,11 +76,11 @@ class Graph {
 
         return true
     }
-
+/*
     boolean removeEdge(int nodeLabel1, int nodeLabel2) {
         return removeEdge(new Edge(new Node(nodeLabel1),
                 new Node(nodeLabel2)))
-    }
+    }*/
 
     Set<Node> getAdjVertices(Node v) {
         return adjList.get(v).stream()
@@ -97,9 +103,20 @@ class Graph {
 
     Node getRoot() {
         if(this.nodes.isEmpty()){
-            this.addNode(new Node(0))
+            //println("nodos esta vacio")
+            this.addNode(new Node(0,this).save(failOnError: true))
         }
-        return this.nodes.stream().filter{node -> node.id == 0}.findFirst().get()
+
+
+
+        //return  this.nodes.stream().filter{node -> node.id == 0}.findFirst().get()
+        /*def a = this.nodes.find {node -> node.nodeId == 0}
+        println(a)
+        return a*/
+        def a = this.nodes.stream().filter{node -> node.nodeId == 0}.findFirst().get()
+      //  println(a)
+        return a
+
     }
 
     Set<Edge> getAdjacentsToNodeWithSpecificBodyPart(Node v, String bodyPartName){
@@ -111,12 +128,13 @@ class Graph {
         Node root = this.getRoot()
         Edge newEdge
 
-        Node newNode = new Node(this.nodes.size()+1, cloth)
+        Node newNode = new Node(this.nodes.size()+1, cloth, this)
         this.nodes.add(newNode)
 
         if(cloth.bodyPart.name() == "CHEST"){
-            newEdge = new Edge(root,newNode)
+            newEdge = new Edge(root,newNode, this)
             this.addEdge(newEdge)
+            newEdge.save(failOnError: true)
         }
         if(cloth.bodyPart.name() == "CHEST2"){
             this.connectWithAll("CHEST", newNode)
@@ -139,11 +157,12 @@ class Graph {
         if(cloth.bodyPart.name() == "HEAD"){
             this.connectWithAll("CHEST", newNode)
         }
+        newNode.save(failOnError: true)
     }
 
     def connectWithAll(String bodyPart, Node endNode) {
         this.getNodes().stream().filter{ node -> node.cloth != null && node.cloth.bodyPart.name() == bodyPart}
-                .forEach{ node -> this.addEdge(new Edge(node,endNode)) }
+                .forEach{ node -> this.addEdge(new Edge(node,endNode,this).save(failOnError: true)) }
     }
 
     def updateProbabilities(Edge edge, Set<Edge> edges) {
