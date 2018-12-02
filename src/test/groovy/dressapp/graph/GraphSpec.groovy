@@ -1,5 +1,7 @@
 package dressapp.graph
 
+import dressapp.users.ColdResistance
+import dressapp.users.Formality
 import dressapp.users.User
 import dressapp.clothes.Clothes
 import dressapp.containers.Wardrobe
@@ -39,7 +41,7 @@ class GraphSpec extends Specification implements DomainUnitTest<Graph> {
     def "addAShirtTest"(){
         given:
             //setee los parametros que faltaban
-            Clothes shirt1 = new Clothes('remera', BodyPart.CHEST,'red','algodon', ColdResistance.NOTHING, Formality.INFORMAL,
+            Clothes shirt1 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
                 'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
             this.graph.addCloth(shirt1)
         expect:
