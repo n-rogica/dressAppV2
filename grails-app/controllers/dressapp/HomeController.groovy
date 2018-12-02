@@ -26,7 +26,9 @@ class HomeController {
         if(!loggedUser.dressed) {
 
             outfit = loggedUser.wardrobe.generateSuggestion()
-            outfit.save()
+            outfit.save(flush: true, failOnError: true)
+        }else{
+            outfit = loggedUser.dressedOutfit
         }
 
       render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
@@ -119,21 +121,27 @@ class HomeController {
       }
 
     def another() {
-
+        loggedUser = User.findByUsername(getPrincipal().username)
         outfit = loggedUser.wardrobe.generateSuggestion()
         render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
     }
 
     def useOutfit() {
+        loggedUser = User.findByUsername(getPrincipal().username)
         loggedUser.setDressed(true)
-//        loggedUser.save()
-//        outfit.save()
+        //loggedUser.dressedOutfit = outfit
+        loggedUser.save(flush: true, failOnError: true)
+
+//        loggedUser.dressedOutfit.save(flush: true, failOnError: true)
         render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
     }
 
     def undress() {
+        loggedUser = User.findByUsername(getPrincipal().username)
         loggedUser.setDressed(false)
-//        loggedUser.save()
+        loggedUser.dressedOutfit = null
+        loggedUser.save(flush: true, failOnError: true)
+
         render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
     }
 

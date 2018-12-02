@@ -1,6 +1,7 @@
 package dressapp.users
 
 import dressapp.calendar.Event
+import dressapp.containers.Outfit
 import dressapp.containers.Wardrobe
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
@@ -21,6 +22,7 @@ class User implements Serializable {
     boolean passwordExpired
 
     boolean dressed
+    Outfit dressedOutfit
 
 
     static hasOne = [userInfo: UserInfo, wardrobe: Wardrobe]
@@ -35,6 +37,7 @@ class User implements Serializable {
       username nullable: false, blank: false, unique: true
       password nullable: false, blank: false, password: true
       friends nullable: true
+        dressedOutfit nullable: true
     }
 
     User(username, password) {
@@ -51,6 +54,10 @@ class User implements Serializable {
 
     def setDressed(boolean dressed){
         this.dressed = dressed
+    }
+
+    def setOutfit(Outfit outfit){
+        this.dressedOutfit = outfit
     }
 
     def addFriend(User otherUser) {
