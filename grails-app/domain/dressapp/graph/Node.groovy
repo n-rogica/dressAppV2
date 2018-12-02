@@ -36,10 +36,6 @@ class Node {
 
     void setId(int id) {
         this.id = id
-    }  
-
-//    List<Node> getAllThatGoesTo(String bodyPart) {
-//        return edges.stream().filter{edge -> edge.endNode.cloth.bodyPart.name() == bodyPart}.map{edge -> edge.endNode}.collect()
-//    }
+    }
 
 }

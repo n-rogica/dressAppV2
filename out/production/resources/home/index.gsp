@@ -3,20 +3,6 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-<<<<<<< HEAD
-    <title>Home Page</title>
-</head>
-<body>
-
-<div id="content" role="main">
-    <section class="row colset-2-its">
-        <h1>Dressapp</h1>        
-        <ul>
-          <li><g:link controller="user" action="index">Users</g:link></li>
-          <li><g:link controller="wardrobe" action="index">wardrobe</g:link></li>
-          <li><g:link controller="clothes" action="index">clothes</g:link></li>
-
-=======
     <title>Dressapp Home</title>
     <link rel="stylesheet" href="${resource(file: 'home.css')}" type="text/css">
 </head>
@@ -54,7 +40,6 @@
             </div>
 
         </div>
->>>>>>> e4ac7a039bdae12d9dc3598f9a617542da7ba2b2
     </section>
 </div>
 

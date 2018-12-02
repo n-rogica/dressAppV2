@@ -47,6 +47,57 @@ class GraphSpec extends Specification implements DomainUnitTest<Graph> {
         expect:
             this.graph.nodes.size() == 2
             this.graph.edges.size() == 1
+            this.graph.edges.getAt(0).weight == 1
+    }
+
+    def "addTwoShirtTest"(){
+        given:
+        //setee los parametros que faltaban
+        Clothes shirt1 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        Clothes shirt2 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        this.graph.addCloth(shirt1)
+        this.graph.addCloth(shirt2)
+        expect:
+        this.graph.nodes.size() == 3
+        this.graph.edges.size() == 2
+        this.graph.edges.getAt(0).weight == 1
+        this.graph.edges.getAt(1).weight == 1
+    }
+
+    def "usingCombinationChangesWeights"(){
+        given:
+        //setee los parametros que faltaban
+        Clothes shirt1 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        Clothes shirt2 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        this.graph.addCloth(shirt1)
+        this.graph.addCloth(shirt2)
+        this.graph.useCombination(this.graph.getRoot(),this.graph.nodes.getAt(1))
+        expect:
+        this.graph.nodes.size() == 3
+        this.graph.edges.size() == 2
+        this.graph.edges.getAt(0).weight == 2
+        this.graph.edges.getAt(1).weight == 1
+    }
+
+    def "connectWithAllWithTheSameBodyPart"(){
+        Clothes shirt1 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        Clothes shirt2 = new Clothes('remera', "CHEST",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        Clothes buso1 = new Clothes('buso', "CHEST2",'red','algodon', "NOTHING", "INFORMAL",
+                'asd','M','ruta', testUser1, testUser1.wardrobe,null,null).save(failOnError: true)
+        this.graph.addCloth(shirt1)
+        this.graph.addCloth(shirt2)
+        this.graph.addCloth(buso1)
+        expect:
+        this.graph.nodes.size() == 4
+        this.graph.edges.size() == 4
+
+
     }
 
     def cleanup() {

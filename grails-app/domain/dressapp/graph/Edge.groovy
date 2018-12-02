@@ -2,22 +2,22 @@ package dressapp.graph
 
 class Edge {
 
-    private static final int DEFAULT_WEIGHT = 100
+    private static final int DEFAULT_WEIGHT = 1
 
     //static hasOne = [startNode: Node, endNode: Node]
     Node startNode
     Node endNode
-    double probability
+    double weight
 
     Edge(Node startNode, Node endNode) {
         this(startNode, endNode, DEFAULT_WEIGHT)
     }
 
-    Edge(Node startNode, Node endNode, int probability) {
+    Edge(Node startNode, Node endNode, int weight) {
         super()
         this.startNode = startNode
         this.endNode = endNode
-        this.probability = probability
+        this.weight = weight
     }
 
     boolean equals(Object obj) {
@@ -26,13 +26,17 @@ class Edge {
 
         Edge _obj = (Edge) obj
         return _obj.startNode.equals(startNode) && _obj.endNode.equals(endNode) &&
-                _obj.probability == probability
+                _obj.weight == weight
     }
 
     int hashCode() {
         int result = startNode.hashCode()
         result = 31 * result + endNode.hashCode()
-        result = 31 * result + probability
+        result = 31 * result + weight
         return result
+    }
+
+    def use(){
+        this.weight = this.weight + 1
     }
 }

@@ -41,8 +41,10 @@ class BootStrap {
        def pictureBytes3 = new File('src/main/webapp/ropaAgus/pantLacosteVerde.jpeg').bytes
 
        List<Clothes> menShirts = generateClothesFromFile('grails-app/conf/bootData/prendasBA.csv',"camisasHombre", admin)
-       generateClothesFromFile('grails-app/conf/bootData/ropaAgus.csv',"ropaAgusToda", agus)
-
+       List<Clothes> agusClothes = generateClothesFromFile('grails-app/conf/bootData/ropaAgus.csv',"ropaAgusToda", agus)
+        agus.wardrobe.graph.save(failOnError: true)
+           agusClothes.stream().forEach{cloth -> cloth.save(failOnError: true)
+               agus.wardrobe.graph.addCloth(cloth)}
 //       def prenda1 = new Clothes('remera',BodyPart.SHOULDER,'red','algodon',
 //        ColdResistance.NOTHING,Formality.INFORMAL,'asd','M',pictureBytes1,
 //               admin, admin.wardrobe).save(failOnError: true)
