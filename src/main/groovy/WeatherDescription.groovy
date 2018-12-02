@@ -1,7 +1,8 @@
 enum WeatherDescription {
   SUNNY,
   RAINING,
-  SNOWING,
   CLOUDY,
-  STORMY
+  SNOW,
+  HAIL_STORM,
+  STORM
 }

@@ -19,21 +19,16 @@ class BootStrap {
 
     /*  Clothes(name, bodyPart, mainColour, fabric, coldResistance, formality,
         description, size, picture, owner, wardrobe) */
-       Weather weather1 = new Weather(Date.parse('dd-MM-yyyy', "01-12-2018"), 30, WeatherDescription.SUNNY).save(failOnError: true)
-       Weather weather2 = new Weather(Date.parse('dd-MM-yyyy', "24-12-2018"), 25, WeatherDescription.RAINING).save(failOnError: true)
-       Weather weather3 = new Weather(Date.parse('dd-MM-yyyy', "01-12-2018"), -10, WeatherDescription.SUNNY).save(failOnError: true)
-       Weather weather4 = new Weather(Date.parse('dd-MM-yyyy', "02-12-2018"), -2, WeatherDescription.SUNNY).save(failOnError: true)
 
        City city1 = new City("USA","Florida","Miami")
        City city2 = new City("Rusia","Leningrado","San Petersburgo")
+       City city3 = new City("USA","Massachusetts","Boston")
+       City city4 = new City("Argentina","Buenos Aires","CABA")
 
-       city1.addWeather(weather1);
-       city1.addWeather(weather2);
-       city2.addWeather(weather3);
-       city2.addWeather(weather4);
-
-       city1.save(failOnError: true)
-       city2.save(failOnError: true)
+       generateWeatherDataFromFile(city1, 'grails-app/conf/bootData/climaMiami.csv')
+       generateWeatherDataFromFile(city2, 'grails-app/conf/bootData/climaSanPetersburgo.csv')
+       generateWeatherDataFromFile(city3, 'grails-app/conf/bootData/climaBoston.csv')
+       generateWeatherDataFromFile(city4, 'grails-app/conf/bootData/climaCaba.csv')
 
        User agus = new User('agus', 'agus').save(failOnError: true)
        User admin = new User('admin', 'admin').save(failOnError: true)
@@ -70,6 +65,13 @@ class BootStrap {
 
 
 
+    }
+
+    private generateWeatherDataFromFile(City city, String weatherFile) {
+      new File(weatherFile).eachCsvLine { tokens ->
+          city.addWeather(new Weather(Date.parse('dd-MM-yyyy', tokens[0]), Float.parseFloat(tokens[1]), tokens[2]).save(failOnError: true))
+      }
+      city.save(failOnError: true)
     }
 
     private List<Clothes> generateClothesFromFile(String clothData, String pictureFile, User user) {
