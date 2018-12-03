@@ -21,7 +21,7 @@ class Suitcase extends ClothesSuggester{
       this.toDate = new Date().parse("yyyy-MM-dd", toDate)
       this.wardrobe = wardrobe
       this.clothes = wardrobe.clothes
-      this.outfits =  []
+      this.outfits =  wardrobe.outfits
       this.active = true //revisar
     }
 

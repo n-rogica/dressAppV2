@@ -80,7 +80,7 @@
                 </div>
                 <div class="deco-box2">
                     <div class="suitcase-title">Conjuntos</div>
-                    <g:render template="/shared/suitcase" model="[clothes: suitcase.clothes]"/>
+                    <g:render template="/shared/suitcaseOutfits" model="[outfits: suitcase.outfits]"/>
                 </div>
             </div>
         </div>

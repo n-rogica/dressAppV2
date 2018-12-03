@@ -4,8 +4,9 @@
 <style>
     .outfit-box {
         border: 2px solid black;
-        width: 420px;
+        width: 800px;
         margin: 5px;
+        margin-left: 30px;
         background-color: white;
         overflow-y: hidden;
         overflow-x: scroll;

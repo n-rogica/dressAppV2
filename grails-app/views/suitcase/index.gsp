@@ -71,10 +71,10 @@
                                 <div><input class="grid-item" type="checkbox" name="category" value="${it}"><g:message code="suitcase.category.${it}"/></div>
                             </g:each>
                         </div>
-                        <h2 class="title">Maximo de valijas:</h2>
-                        <input class="options" type="number" name="quantity"
-                               min="1" max="3" step="1" value="1">
-                        <br><br>
+                        %{--<h2 class="title">Maximo de valijas:</h2>--}%
+                        %{--<input class="options" type="number" name="quantity"--}%
+                               %{--min="1" max="3" step="1" value="1">--}%
+                        %{--<br><br>--}%
                         <input style="width: 100px; margin: 10px 200px" class="suitcase-button" type="submit" value="ARMAR">
                     </form>
                 </div>
