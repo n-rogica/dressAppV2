@@ -1,6 +1,7 @@
 package dressapp
 
 import dressapp.clothes.Clothes
+import dressapp.containers.Outfit
 import dressapp.users.User
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.core.io.Resource
@@ -24,11 +25,10 @@ class HomeController {
       }
         //Aca abajo deberia llamar a la sugerencia
         if(!loggedUser.dressed) {
-
             outfit = loggedUser.wardrobe.generateSuggestion()
             outfit.save(flush: true, failOnError: true)
         }else{
-            outfit = loggedUser.dressedOutfit
+//            outfit = loggedUser.dressedOutfit
         }
 
       render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
@@ -127,13 +127,18 @@ class HomeController {
     }
 
     def useOutfit() {
-        loggedUser = User.findByUsername(getPrincipal().username)
-        loggedUser.setDressed(true)
-        //loggedUser.dressedOutfit = outfit
-        loggedUser.save(flush: true, failOnError: true)
+        Outfit outfitSelected = Outfit.findById(params.get("outfit"))
+        if(outfitSelected != null) {
+            outfitSelected.setVisible(true)
+            outfitSelected.save(flush: true, failOnError: true)
+            loggedUser = User.findByUsername(getPrincipal().username)
+            loggedUser.setDressed(true)
+            //loggedUser.dressedOutfit = outfit
+            loggedUser.save(flush: true, failOnError: true)
 
 //        loggedUser.dressedOutfit.save(flush: true, failOnError: true)
-        render (view: 'index.gsp', model:[loggedUser: loggedUser, outfit: outfit,categories: categories])
+        }
+            render(view: 'index.gsp', model: [loggedUser: loggedUser, outfit: outfit, categories: categories])
     }
 
     def undress() {

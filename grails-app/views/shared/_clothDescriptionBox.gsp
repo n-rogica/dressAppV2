@@ -6,7 +6,7 @@
         border: 2px solid black;
         display: inline-flex;
         vertical-align: top;
-        width: 400px;
+        width: 420px;
         margin: 5px;
         background-color: white;
     }

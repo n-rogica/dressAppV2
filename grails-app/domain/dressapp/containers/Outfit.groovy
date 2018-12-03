@@ -8,6 +8,7 @@ class Outfit extends ClothesManager{
     int usesCount
     OutfitStatus outfitStatus
     static belongsTo = [wardrobe: Wardrobe]
+    boolean visible
 
     static constraints = {
     }
@@ -23,6 +24,21 @@ class Outfit extends ClothesManager{
       wardrobe.outfits.add(this)
       this.wardrobe = wardrobe
       this.outfitStatus = OutfitStatus.AVAILABLE
+      this.visible = false
+    }
+
+    Outfit(String description, Wardrobe wardrobe, List<Clothes> clothes) {
+        this.description = description
+        this.usesCount = 0
+        this.clothes = clothes
+        wardrobe.outfits.add(this)
+        this.wardrobe = wardrobe
+        this.outfitStatus = OutfitStatus.AVAILABLE
+        this.visible = false
+    }
+
+    def setVisible(boolean visible){
+        this.visible = visible
     }
 
     def use() {

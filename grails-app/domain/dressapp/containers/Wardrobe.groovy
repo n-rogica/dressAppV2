@@ -13,6 +13,7 @@ class Wardrobe extends ClothesSuggester {
     //modo
     static belongsTo = [user: User]
     static hasMany = [suitcases: Suitcase]
+
     //static hasOne = [graph: Graph]
     Graph graph
 
@@ -53,7 +54,8 @@ class Wardrobe extends ClothesSuggester {
     }
 
     Outfit generateSuggestion() {
-        Outfit outfit = new Outfit("suggestion", this)
+        int size = Outfit.findAll().size()
+        Outfit outfit = new Outfit("Sugerencia "+size, this)
         Weather weather = new Weather(new Date(), 5, WeatherDescription.SNOW)
 
 //        List<Node> nodes = this.graph.getSuggestion(3)

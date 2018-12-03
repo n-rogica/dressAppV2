@@ -5,10 +5,11 @@
     <style>
         .suitcase-cloth-list{
             height:250px;
-            width:900px;
-            border: 3px solid #9bcbef;
+            width:880px;
+            border: 3px solid #414041;
             font:16px/26px Georgia, Garamond, Serif;
             overflow:auto;
+            max-resolution: 1px;
         }
     </style>
 

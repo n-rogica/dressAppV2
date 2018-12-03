@@ -119,7 +119,7 @@
                         %{--</g:each>--}%
                     %{--</div>--}%
                     <g:link controller="home" action="another"><button class="button-cool" type="button">Otra sugerencia</button></g:link>
-                    <g:link controller="home" action="useOutfit"><button class="button-cool" type="button">Usar conjunto</button></g:link>
+                    <g:link controller="home" action="useOutfit" params="${[outfit: outfit.id]}"><button class="button-cool" type="button">Usar conjunto</button></g:link>
                 </g:if>
 
                 <g:if test="${loggedUser.dressed}">

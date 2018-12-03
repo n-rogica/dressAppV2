@@ -29,6 +29,20 @@
             font-size: 14px;
             text-align: center;
         }
+        .deco-box2 {
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+            background-color: #9bcbef;
+            padding-bottom: 30px;
+        }
+        .suitcase-title{
+            margin: 10px;
+            font-weight: bolder;
+            color: #414041;
+            font-size: 25px;
+        }
     </style>
     </head>
     <body>
@@ -60,12 +74,14 @@
                         <img class="suitcase-img" src="${createLink(controller: 'suitcase', action: 'showImage2')}"/>
                     </div>
                 </div>
-                <h2>Valija 1</h2>
-                <g:render template="/shared/suitcase" model="[clothes: suitcase.clothes]"/>
-                <h2>Valija 2</h2>
-                <g:render template="/shared/suitcase" model="[clothes: suitcase.clothes]"/>
-                <h2>Conjuntos</h2>
-                <g:render template="/shared/suitcase" model="[clothes: suitcase.clothes]"/>
+                <div class="deco-box2">
+                    <div class="suitcase-title">Valija</div>
+                        <g:render template="/shared/suitcase" model="[clothes: suitcase.clothes]"/>
+                </div>
+                <div class="deco-box2">
+                    <div class="suitcase-title">Conjuntos</div>
+                    <g:render template="/shared/suitcase" model="[clothes: suitcase.clothes]"/>
+                </div>
             </div>
         </div>
     </body>

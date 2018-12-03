@@ -4,7 +4,7 @@
 <style>
     .outfit-box {
         border: 2px solid black;
-        width: 415px;
+        width: 420px;
         margin: 5px;
     }
 
