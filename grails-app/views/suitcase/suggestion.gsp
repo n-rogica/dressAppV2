@@ -7,7 +7,7 @@
 
     <style type="text/css">
         .suitcase-suggestions {
-            width: 900px;
+            width: 910px;
             margin: 10px auto;
         }
         .subItem{
