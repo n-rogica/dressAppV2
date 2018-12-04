@@ -56,7 +56,16 @@ class Wardrobe extends ClothesSuggester {
     Outfit generateSuggestion() {
         int size = Outfit.findAll().size()
         Outfit outfit = new Outfit("Sugerencia "+size, this)
-        Weather weather = new Weather(new Date(), 5, WeatherDescription.SNOW)
+        List<String> weathers = ["SUNNY",
+                                 "RAINING",
+                                 "CLOUDY",
+                                 "SNOW",
+                                 "HAIL_STORM",
+                                 "STORM"]
+        Random rand = new Random()
+        int randWeather = rand.nextInt(weathers.size())
+        int randTemp = rand.nextInt(10)+1
+        Weather weather = new Weather(new Date(), randTemp, WeatherDescription.valueOf(weathers.get(randWeather)))
 
 //        List<Node> nodes = this.graph.getSuggestion(3)
 //        nodes.stream().map{node -> node.cloth}.forEach{cloth -> outfit.addClothes(cloth)}
